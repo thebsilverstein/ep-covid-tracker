@@ -24,20 +24,40 @@ body {
 .header {
   h1 {
     font-weight: 800;
-    font-size: 1.8em;
+    font-size: 1.7em;
     letter-spacing: -0.045em;
     line-height: 1.1em;
     padding: 0;
     margin: 0;
+    @media (min-width: 600px) {
+      font-size: 2.2em;
+    }
+  }
+  p {
+    padding: 0;
+    margin: 0;
+    font-size: 0.9em;
   }
   background: #111;
   color: white;
-  border-bottom: 1px solid #ddd;
+  font-weight: 300;
 }
 
-.last-updated {
-  font-weight: 300;
-  font-size: 0.80em;
+.total-cases {
+  font-weight: 500;
+  text-transform: uppercase;
+  p {
+    padding: 0;
+    margin: 0;
+    font-size: 0.9em;
+  }
+  span {
+    color: #fed907;
+    font-weight: 800;
+    display: block;
+    font-size: 2.8em;
+    line-height: 1.0em;
+  }
 }
 
 h2 {
@@ -46,4 +66,73 @@ h2 {
   letter-spacing: -0.045em;
   line-height: 1.1em;
   text-align: center;
+}
+
+h3 {
+  font-weight: 800;
+  font-size: 1.4em;
+  letter-spacing: -0.045em;
+  line-height: 1.1em;
+  text-align: center;
+}
+
+h4 {
+  font-weight: 800;
+  font-size: 1.2em;
+  letter-spacing: -0.045em;
+  line-height: 1.1em;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  font-size: 0.75em;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #333;
+  text-decoration: underline;
+  &:hover {
+    color: black;
+  }
+}
+
+p {
+  letter-spacing: -0.045em;
+}
+
+.alert {
+  background: #f70000;
+  border-radius: 0px;
+  h2 {
+    color: white;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+    color: white;
+    a {
+      color: white;
+      font-weight: 700;
+    }
+  }
+}
+
+.footer {
+  background: #111;
+  color: #666666;
+  font-size: 0.8em;
+  a {
+    color: #666666;
+    &:hover {
+      color: #999999;
+    }
+  }
 }
