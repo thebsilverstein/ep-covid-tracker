@@ -14,4 +14,36 @@
  *= require_self
  */
 
- @import "bootstrap";
+@import "bootstrap";
+
+body {
+ background: #fff;
+ font-family: 'Inter', sans-serif;
+}
+
+.header {
+  h1 {
+    font-weight: 800;
+    font-size: 1.8em;
+    letter-spacing: -0.045em;
+    line-height: 1.1em;
+    padding: 0;
+    margin: 0;
+  }
+  background: #111;
+  color: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.last-updated {
+  font-weight: 300;
+  font-size: 0.80em;
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 1.6em;
+  letter-spacing: -0.045em;
+  line-height: 1.1em;
+  text-align: center;
+}
