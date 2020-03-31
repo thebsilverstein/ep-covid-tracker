@@ -1,3 +1,5 @@
+<%= high_chart_globals(@chart_globals) %>
+
 <div class="container-fluid header py-3 py-lg-4">
   <div class="row align-items-center">
     <div class="col-12 text-center col-lg-6 text-lg-left">
@@ -13,12 +15,22 @@
   <div class="row">
     <div class="col">
       <h2>Total Cases by Day</h2>
-      <%= high_chart_globals(@chart_globals) %>
       <%= high_chart("total_cases_by_day", @total_cases_by_day) %>
     </div>
   </div>
 </div>
 
-
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-6 mb-5 mb-lg-0">
+      <h2>Total Cases by Age Range</h2>
+      <%= high_chart("total_cases_by_age_range", @total_cases_by_age_range) %>
+    </div>
+    <div class="col-lg-6">
+      <h2>Total Cases by Gender</h2>
+      <%= high_chart("total_cases_by_gender", @total_cases_by_gender) %>
+    </div>
+  </div>
+</div>
 
 
