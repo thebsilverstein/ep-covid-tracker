@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
   def index
 
-    @last_updated_on = Time.zone.parse("2020-03-31 08:38:00 PM")
+    @last_updated_on = Time.zone.parse("2020-03-31 09:07:00 PM")
 
     @chart_globals = LazyHighCharts::HighChartGlobals.new do |f|
       # f.global(useUTC: false)
