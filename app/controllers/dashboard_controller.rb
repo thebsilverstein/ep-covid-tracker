@@ -20,6 +20,8 @@ class DashboardController < ApplicationController
       f.lang(thousandsSep: ",")
       f.colors(["#fed907", "#f7a35c", "#8085e9", "#f15c80", "#e4d354"])
     end
+
+    @total_cases = 50
     
     @total_cases_by_day = LazyHighCharts::HighChart.new('graph') do |f|
       f.xAxis(title: { enabled: false }, categories: ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31"])
@@ -56,6 +58,24 @@ class DashboardController < ApplicationController
       f.chart({defaultSeriesType: "pie"})
     end
 
-    @last_updated_on = Time.zone.parse("2020-03-31 19:48:00")
+    @total_cases_by_zip_code = [ [79821, 1],
+                                 [79902, 2],
+                                 [79904, 3],
+                                 [79905, 1],
+                                 [79907, 4],
+                                 [79911, 2],
+                                 [79912, 6],
+                                 [79915, 1],
+                                 [79924, 2],
+                                 [79925, 2],
+                                 [79927, 3],
+                                 [79928, 8],
+                                 [79932, 1],
+                                 [79934, 2],
+                                 [79935, 2],
+                                 [79936, 6],
+                                 [79938, 5], ]
+
+    @last_updated_on = Time.zone.parse("2020-03-31 08:20:00 PM")
   end
 end
