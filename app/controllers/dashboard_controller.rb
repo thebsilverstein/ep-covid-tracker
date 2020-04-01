@@ -56,5 +56,6 @@ class DashboardController < ApplicationController
       f.chart({defaultSeriesType: "pie"})
     end
 
+    @last_updated_on = Time.zone.parse("2020-03-30 22:00:00")
   end
 end

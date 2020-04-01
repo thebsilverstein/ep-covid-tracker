@@ -4,7 +4,7 @@
   <div class="row align-items-center">
     <div class="col-12 text-center col-lg-9 text-lg-left mb-3 mb-lg-0">
       <h1>El Paso, Texas COVID-19 Tracker</h1>
-      <p>Last Updated: March 31 4:52 PM <em>(<%= time_ago_in_words(Time.now - 2.hours) %> ago)</em></p>
+      <p>Last Updated: <%= @last_updated_on.strftime("%B %e %I:%M") %> MDT <em>(<%= time_ago_in_words(@last_updated_on) %> ago)</em></p>
     </div>
     <div class="col-12 text-center col-lg-3 text-lg-right total-cases">
       <span class="counter">46</span>
@@ -57,11 +57,13 @@
   </div>
 </div>
 
-<div class="container-fluid footer py-2 py-lg-3">
+<div class="container-fluid footer py-3">
   <div class="row align-items-center">
     <div class="col-12 text-center text-lg-right">
-      Not Affiliated with the <%= link_to "City of El Paso", "https://www.elpasotexas.gov" %> or the <%= link_to "City of El Paso Department of Public Health", "https://www.google.com/search?q=City+of+El+Paso+Department+of+Public+Health" %><br>
-      Site by <%= link_to "Brandon Silverstein", "https://twitter.com/thebsilverstein" %>
+      Not Affiliated with the <%= link_to "City of El Paso", "https://www.elpasotexas.gov" %> or the <%= link_to "City of El Paso Department of Public Health", "https://www.google.com/search?q=City+of+El+Paso+Department+of+Public+Health" %>
+      <div class="mt-2">
+        Site by <%= link_to "Brandon Silverstein", "https://twitter.com/thebsilverstein" %>
+      </div>
     </div>
   </div>
 </div>
