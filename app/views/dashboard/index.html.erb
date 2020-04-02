@@ -2,11 +2,11 @@
 
 <div class="container-fluid header py-3 py-lg-4">
   <div class="row align-items-center">
-    <div class="col-12 text-center col-lg-9 text-lg-left mb-3 mb-lg-0">
+    <div class="col-lg-9 text-center text-lg-left mb-3 mb-lg-0">
       <h1>El Paso, Texas COVID-19 Tracker</h1>
       <p>Last Updated: <%= @last_updated_on.strftime("%B %e %l:%M %p") %> MDT <em>(<%= time_ago_in_words(@last_updated_on) %> ago)</em></p>
     </div>
-    <div class="col-12 text-center col-lg-3 text-lg-right total-cases">
+    <div class="col-lg-3 text-center text-lg-right total-cases">
       <span class="counter"><%= @total_cases %></span>
       <p>Total Cases</p>
     </div>
@@ -15,9 +15,17 @@
 
 <div class="container-fluid mb-5">
   <div class="row">
-    <div class="col alert text-center">
-      <h2>Stay Home, Work Safe</h2>
-      <p>El Paso residents are temporarily directed to stay home, and businesses are temporarily required to cease activity. <%= link_to "Read More", "http://epstrong.org/faqs.php" %></p>
+    <div class="col-12 alert text-center">
+
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h2>Emergency Directive</h2>
+            <p>All parks and recreational areas are now closed to the public and off limits. Public and private gatherings of any kind are prohibited. <%= link_to "Read More", "http://epstrong.org/faqs.php" %></p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -28,6 +36,20 @@
       <h2>Total Cases by Day</h2>
       <%= high_chart("total_cases_by_day", @total_cases_by_day) %>
     </div>
+  </div>
+</div>
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-6 mb-5 mb-lg-0">
+      <h3>Total Cases by Age Range</h3>
+      <%= high_chart("total_cases_by_age_range", @total_cases_by_age_range) %>
+    </div>
+    <div class="col-lg-6">
+      <h3>Total Cases by Gender</h3>
+      <%= high_chart("total_cases_by_gender", @total_cases_by_gender) %>
+    </div>
+    <hr>
   </div>
 </div>
 
@@ -55,19 +77,13 @@
       </table>
     </div>
   </div>
-</div>
-
-<div class="container my-5">
-  <div class="row">
-    <div class="col-lg-6 mb-5 mb-lg-0">
-      <h3>Total Cases by Age Range</h3>
-      <%= high_chart("total_cases_by_age_range", @total_cases_by_age_range) %>
-    </div>
-    <div class="col-lg-6">
-      <h3>Total Cases by Gender</h3>
-      <%= high_chart("total_cases_by_gender", @total_cases_by_gender) %>
-    </div>
-    <hr>
+  <div class="row mt-5">
+      <% @total_cases_by_individual_zip_code.each do |zip_code, chart| %>
+        <div class="col-md-6 col-lg-3 chart-individual-zip-code mb-5">
+          <h3>Total Cases in <%= zip_code %></h3>
+          <%= high_chart("total_cases_by_individual_zip_code_#{zip_code}", chart) %>
+        </div>
+      <% end %>
   </div>
 </div>
 
