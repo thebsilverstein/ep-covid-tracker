@@ -36,7 +36,7 @@ class DashboardController < ApplicationController
 
     zip_data_categories_1 = ["3/31", "4/1"]
 
-    zip_data = [[79821, [1, 2]],
+    zip_data = [[79821, [1, 1]],
                 [79849, [1]],
                 [79902, [2, 2]],
                 [79904, [3, 6]],
