@@ -1,60 +1,61 @@
 class DashboardController < ApplicationController
   def index
 
-    @last_updated_on = Time.zone.parse("2020-04-01 09:20:00 PM")
-    @total_cases = 68
+    @last_updated_on = Time.zone.parse("2020-04-02 7:45:00 PM")
+    @total_cases = 78
 
-    total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1"]
-    total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68]
+    total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2"]
+    total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68, 78]
 
-    total_cases_by_age_range_categories = ["Teens", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89"]
-    total_cases_by_age_range_data = [2, 15, 12, 10, 13, 8, 7, 1]
+    total_cases_by_age_range_categories = ["12 & Under", "Teens", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89"]
+    total_cases_by_age_range_data = [1, 2, 19, 14, 11, 14, 9, 7, 1]
 
-    total_cases_by_gender_male = 30
-    total_cases_by_gender_female = 38
+    total_cases_by_gender_male = 34
+    total_cases_by_gender_female = 44
 
     @total_cases_by_zip_code = [ [79821, 1],
                                  [79849, 1],
                                  [79902, 2],
-                                 [79904, 6],
+                                 [79904, 7],
                                  [79905, 2],
                                  [79907, 4],
-                                 [79911, 2],
+                                 [79911, 3],
                                  [79912, 7],
                                  [79915, 1],
-                                 [79924, 2],
-                                 [79925, 3],
-                                 [79927, 3],
+                                 [79924, 3],
+                                 [79925, 4],
+                                 [79927, 5],
                                  [79928, 11],
                                  [79932, 2],
                                  [79934, 3],
                                  [79935, 3],
-                                 [79936, 7],
-                                 [79938, 8], ]
+                                 [79936, 9],
+                                 [79938, 10], ]
+
+    # zip_data_categories_1 = total_cases_by_day_categories.drop(18)
+    zip_data_categories_1 = ["3/31", "4/1", "4/2"]
+
+    zip_data = [[79821, [1, 1, 1]],
+                [79849,    [1, 1]],
+                [79902, [2, 2, 2]],
+                [79904, [3, 6, 7]],
+                [79905, [1, 2, 2]],
+                [79907, [4, 4, 4]],
+                [79911, [2, 2, 3]],
+                [79912, [6, 7, 7]],
+                [79915, [1, 1, 1]],
+                [79924, [2, 2, 3]],
+                [79925, [2, 3, 4]],
+                [79927, [3, 3, 5]],
+                [79928, [8, 11, 11]],
+                [79932, [1, 2, 2]],
+                [79934, [2, 3, 3]],
+                [79935, [2, 3, 3]],
+                [79936, [5, 7, 9]],
+                [79938, [5, 8, 10]],
+                ]
 
     max_value = @total_cases_by_zip_code.map { |entry| entry[1] }.max
-
-    zip_data_categories_1 = ["3/31", "4/1"]
-
-    zip_data = [[79821, [1, 1]],
-                [79849, [1]],
-                [79902, [2, 2]],
-                [79904, [3, 6]],
-                [79905, [1, 2]],
-                [79907, [4, 4]],
-                [79911, [2, 2]],
-                [79912, [6, 7]],
-                [79915, [1, 1]],
-                [79924, [2, 2]],
-                [79925, [2, 3]],
-                [79927, [3, 3]],
-                [79928, [8, 11]],
-                [79932, [1, 2]],
-                [79934, [2, 3]],
-                [79935, [2, 3]],
-                [79936, [5, 7]],
-                [79938, [5, 8]],
-                ]
 
     ##### Globals
 
@@ -89,7 +90,7 @@ class DashboardController < ApplicationController
       ]
 
       f.legend(enabled: false)
-      f.chart({defaultSeriesType: "column", height: 300})
+      f.chart({defaultSeriesType: "bar", height: 300})
     end
 
     ##### Total Cases by Gender
