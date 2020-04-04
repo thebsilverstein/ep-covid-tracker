@@ -19,9 +19,9 @@
 
       <div class="container">
         <div class="row">
-          <div class="col">
-            <h2>Emergency Directive</h2>
-            <p>All parks and recreational areas are now closed to the public and off limits. Public and private gatherings of any kind are prohibited. <%= link_to "Read More", "http://epstrong.org/faqs.php" %></p>
+          <div class="col col-md-10 offset-md-1">
+            <h2><%= @last_updated_on.strftime("%A, %B %e") %>: <%= pluralize @new_cases, "New Case" %></h2>
+            <p>Stay home, work safe. Public and private gatherings of any kind are prohibited. All parks and recreational areas are closed to the public and off limits. <%= link_to "Read More", "http://epstrong.org/faqs.php" %></p>
           </div>
         </div>
       </div>
@@ -103,11 +103,9 @@
     <div class="col">
       <h4>Data Sources</h4>
       <ul>
-        <li><%= link_to "City of El Paso Facebook - April 3, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-el-paso-identifies-additional-covid-19-cases/2923000401072717/" %></li>
-        <li><%= link_to "City of El Paso Facebook - April 2, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-el-paso-identifies-additional-covid-19-cases/2920931354612955/" %></li>
-        <li><%= link_to "City of El Paso Facebook - April 1, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/city-amends-emergency-directive-aimed-at-reducing-spread-of-covid-19/2918569611515796/" %></li>
-        <li><%= link_to "City of El Paso Facebook - March 31, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-el-paso-identifies-additional-covid-19-cases/2916368208402603/" %></li>
-        <li><%= link_to "El Paso Matters - March 30, 2020", "https://elpasomatters.org/2020/03/30/el-paso-has-begun-showing-general-location-of-covid-19-positive-tests/" %></li>
+        <% for link in @links %>
+          <li><%= link_to link[0], link[1] %></li>
+        <% end %>
       </ul>
     </div>
   </div>

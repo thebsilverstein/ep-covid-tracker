@@ -1,11 +1,12 @@
 class DashboardController < ApplicationController
   def index
 
-    @last_updated_on = Time.zone.parse("2020-04-03 7:34:00 PM")
+    @last_updated_on = Time.zone.parse("2020-04-04 6:30:00 PM")
     @total_cases = 96
+    @new_cases = 18
 
-    total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3"]
-    total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68, 78, 96]
+    total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4"]
+    total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68, 78, 96, ]
 
     total_cases_by_age_range_categories = ["12 & Under", "Teens", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"]
     total_cases_by_age_range_data = [2, 4, 20, 20, 15, 14, 9, 10, 1, 1]
@@ -34,30 +35,38 @@ class DashboardController < ApplicationController
                                  [79938, 12], ]
 
     # zip_data_categories_1 = total_cases_by_day_categories.drop(18)
-    zip_data_categories_1 = ["3/31", "4/1", "4/2", "4/3"]
+    zip_data_categories_1 = ["3/31", "4/1", "4/2", "4/3", "4/4"]
 
-    zip_data = [[79821, [1, 1, 1, 1]],
-                [79849,    [1, 1, 1]],
-                [79853,          [1]],
-                [79902, [2, 2, 2, 2]],
-                [79904, [3, 6, 7, 7]],
-                [79905, [1, 2, 2, 3]],
-                [79907, [4, 4, 4, 5]],
-                [79911, [2, 2, 3, 3]],
-                [79912, [6, 7, 7, 8]],
-                [79915, [1, 1, 1, 1]],
-                [79924, [2, 2, 3, 3]],
-                [79925, [2, 3, 4, 5]],
-                [79927, [3, 3, 5, 7]],
-                [79928, [8, 11, 11, 11]],
-                [79932, [1, 2, 2, 6]],
-                [79934, [2, 3, 3, 3]],
-                [79935, [2, 3, 3, 4]],
-                [79936, [5, 7, 9, 13]],
-                [79938, [5, 8, 10, 12]],
+    zip_data = [[79821, [1, 1, 1, 1, ]],
+                [79849,    [1, 1, 1, ]],
+                [79853,          [1, ]],
+                [79902, [2, 2, 2, 2, ]],
+                [79904, [3, 6, 7, 7, ]],
+                [79905, [1, 2, 2, 3, ]],
+                [79907, [4, 4, 4, 5, ]],
+                [79911, [2, 2, 3, 3, ]],
+                [79912, [6, 7, 7, 8, ]],
+                [79915, [1, 1, 1, 1, ]],
+                [79924, [2, 2, 3, 3, ]],
+                [79925, [2, 3, 4, 5, ]],
+                [79927, [3, 3, 5, 7, ]],
+                [79928, [8, 11, 11, 11, ]],
+                [79932, [1, 2, 2, 6, ]],
+                [79934, [2, 3, 3, 3, ]],
+                [79935, [2, 3, 3, 4, ]],
+                [79936, [5, 7, 9, 13, ]],
+                [79938, [5, 8, 10, 12, ]],
                 ]
 
     max_value = @total_cases_by_zip_code.map { |entry| entry[1] }.max
+
+    @links = [ ["City of El Paso Facebook - April 4, 2020", ""],
+               ["City of El Paso Facebook - April 3, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-el-paso-identifies-additional-covid-19-cases/2923000401072717/"],
+               ["City of El Paso Facebook - April 2, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-el-paso-identifies-additional-covid-19-cases/2920931354612955/"],
+               ["City of El Paso Facebook - April 1, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/city-amends-emergency-directive-aimed-at-reducing-spread-of-covid-19/2918569611515796/"],
+               ["City of El Paso Facebook - March 31, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-el-paso-identifies-additional-covid-19-cases/2916368208402603/"],
+               ["El Paso Matters - March 30, 2020", "https://elpasomatters.org/2020/03/30/el-paso-has-begun-showing-general-location-of-covid-19-positive-tests/"]
+             ]
 
     ##### Globals
 
