@@ -18,7 +18,7 @@ class DashboardController < ApplicationController
                                  [79853, 1],
                                  [79902, 2],
                                  [79904, 7],
-                                 [79905, 5],
+                                 [79905, 3],
                                  [79907, 5],
                                  [79911, 3],
                                  [79912, 8],
