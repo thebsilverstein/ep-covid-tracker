@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
   def index
 
-    @last_updated_on = Time.zone.parse("2020-04-04 6:30:00 PM")
+    @last_updated_on = Time.zone.parse("2020-04-04 5:12:00 PM")
     @total_cases = 106
     @new_cases = 10
 
