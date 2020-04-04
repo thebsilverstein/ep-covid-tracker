@@ -158,3 +158,7 @@ tr:nth-child(even) {
     }
   }
 }
+
+table.dataTable.table-sm .sorting::before, table.dataTable.table-sm .sorting_asc::before, table.dataTable.table-sm .sorting_desc::before {
+  right: 1.35em;
+}

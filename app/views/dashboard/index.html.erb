@@ -59,7 +59,7 @@
     <div class="col">
       <h3>Total Cases by Zip Code</h3>
       
-      <table class="table table-borderless table-sm text-center mt-3">
+      <table class="table table-borderless table-sm text-center mt-3" id="totalCasesByZipCode">
         <thead class="thead-dark">
           <tr>
             <th>Zip Code</th>
@@ -79,7 +79,7 @@
   </div>
   <div class="row mt-5">
       <% @total_cases_by_individual_zip_code.each do |zip_code, chart| %>
-        <div class="col-md-6 col-lg-3 chart-individual-zip-code mb-5">
+        <div class="col-md-6 col-lg-4 col-xl-3 chart-individual-zip-code mb-5">
           <h3>Total Cases in <%= link_to zip_code, @total_cases_by_zip_code.find { |point| point[0] == zip_code }[1] %></h3>
           <%=  %>
           <%= high_chart("total_cases_by_individual_zip_code_#{zip_code}", chart) %>
