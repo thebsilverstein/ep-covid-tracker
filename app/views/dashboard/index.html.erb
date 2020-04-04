@@ -69,8 +69,8 @@
         <tbody>
           <% for point in @total_cases_by_zip_code %>
             <tr>
-              <td><%= point[0] %></td>
-              <td><%= point[1] %></td>
+              <td><%= link_to point[0], point[1] %></td>
+              <td><%= point[2] %></td>
             </tr>
           <% end %>
         </tbody>
@@ -80,7 +80,8 @@
   <div class="row mt-5">
       <% @total_cases_by_individual_zip_code.each do |zip_code, chart| %>
         <div class="col-md-6 col-lg-3 chart-individual-zip-code mb-5">
-          <h3>Total Cases in <%= zip_code %></h3>
+          <h3>Total Cases in <%= link_to zip_code, @total_cases_by_zip_code.find { |point| point[0] == zip_code }[1] %></h3>
+          <%=  %>
           <%= high_chart("total_cases_by_individual_zip_code_#{zip_code}", chart) %>
         </div>
       <% end %>

@@ -14,25 +14,25 @@ class DashboardController < ApplicationController
     total_cases_by_gender_male = 43
     total_cases_by_gender_female = 53
 
-    @total_cases_by_zip_code = [ [79821, 1],
-                                 [79849, 1],
-                                 [79853, 1],
-                                 [79902, 2],
-                                 [79904, 7],
-                                 [79905, 3],
-                                 [79907, 5],
-                                 [79911, 3],
-                                 [79912, 8],
-                                 [79915, 1],
-                                 [79924, 3],
-                                 [79925, 5],
-                                 [79927, 7],
-                                 [79928, 11],
-                                 [79932, 6],
-                                 [79934, 3],
-                                 [79935, 4],
-                                 [79936, 13],
-                                 [79938, 12], ]
+    @total_cases_by_zip_code = [ [79821, "https://goo.gl/maps/fyDXByr3a6WyCLfh9", 1],
+                                 [79849, "https://goo.gl/maps/48ZtmYoSB18FMxei9", 1],
+                                 [79853, "https://goo.gl/maps/94CsB2nh12CsY12V7", 1],
+                                 [79902, "https://goo.gl/maps/GhAYCydGe7sceeqBA", 2],
+                                 [79904, "https://goo.gl/maps/ShNJW7b9ukMkgdsW9", 7],
+                                 [79905, "https://goo.gl/maps/FaPYhZkQQivu5bpP7", 3],
+                                 [79907, "https://goo.gl/maps/JU1tEasu4SF4Morf7", 5],
+                                 [79911, "https://goo.gl/maps/ra1N74NDxhGZosh18", 3],
+                                 [79912, "https://goo.gl/maps/Kz49kbnE2EzADkvt9", 8],
+                                 [79915, "https://goo.gl/maps/kzwmzKxRakK6ssRa6", 1],
+                                 [79924, "https://goo.gl/maps/U9yL1pJQTKv2riS56", 3],
+                                 [79925, "https://goo.gl/maps/gTb8iXhw6RBuHPpu7", 5],
+                                 [79927, "https://goo.gl/maps/nquJLGWtgKiU3Z4o7", 7],
+                                 [79928, "https://goo.gl/maps/XwoKG1sLG1FiEBwE9", 11],
+                                 [79932, "https://goo.gl/maps/YKuWPdsoiejNWvnh6", 6],
+                                 [79934, "https://goo.gl/maps/ozgMKwoosWHWtDGPA", 3],
+                                 [79935, "https://goo.gl/maps/jiS5uroU4meDaET68", 4],
+                                 [79936, "https://goo.gl/maps/8bzvY2hcPK8qUcWu9", 13],
+                                 [79938, "https://goo.gl/maps/jNF1sLZ61ubkvohR9", 12], ]
 
     # zip_data_categories_1 = total_cases_by_day_categories.drop(18)
     zip_data_categories_1 = ["3/31", "4/1", "4/2", "4/3", "4/4"]
@@ -58,7 +58,7 @@ class DashboardController < ApplicationController
                 [79938, [5, 8, 10, 12, ]],
                 ]
 
-    max_value = @total_cases_by_zip_code.map { |entry| entry[1] }.max
+    max_value = @total_cases_by_zip_code.map { |entry| entry[2] }.max
 
     @links = [ ["City of El Paso Facebook - April 4, 2020", ""],
                ["City of El Paso Facebook - April 3, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-el-paso-identifies-additional-covid-19-cases/2923000401072717/"],
