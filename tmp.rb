@@ -144,10 +144,5 @@ class DashboardController < ApplicationController
       end
     end
 
-    respond_to do |format|
-      format.html  # index.html.erb
-      format.json  { render json: { total_cases: @total_cases } }
-    end
-
   end
 end
