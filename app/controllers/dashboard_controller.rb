@@ -1,12 +1,12 @@
 class DashboardController < ApplicationController
   def index
 
-    @last_updated_on = Time.zone.parse("2020-04-06 6:15:00 PM")
+    @last_updated_on = Time.zone.parse("2020-04-05 6:15:00 PM")
     @total_cases = 115
     @new_cases = 9
 
-    total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6"]
-    total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68, 78, 96, 106, 115, 115]
+    total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4", "4/5"]
+    total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68, 78, 96, 106, 115]
 
     total_cases_by_age_range_categories = ["12 & Under", "Teens", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"]
     total_cases_by_age_range_data = [2, 4, 21, 23, 18, 20, 12, 11, 3, 1]
@@ -37,7 +37,7 @@ class DashboardController < ApplicationController
                                  [79938, "https://goo.gl/maps/jNF1sLZ61ubkvohR9", 15 ], ]
 
     # zip_data_categories_1 = total_cases_by_day_categories.drop(18)
-    zip_data_categories_1 = ["3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6"]
+    zip_data_categories_1 = ["3/31", "4/1", "4/2", "4/3", "4/4", "4/5"]
 
     zip_data = [[79821, [1, 1, 1, 1, 1,     1,  ]],
                 [79835,             [2,     2,  ]],
@@ -64,7 +64,7 @@ class DashboardController < ApplicationController
 
     max_value = @total_cases_by_zip_code.map { |entry| entry[2] }.max
 
-    @links = [ ["City of El Paso Facebook - April 6, 2020", ""],
+    @links = [ 
                ["City of El Paso Facebook - April 5, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-el-paso-identifies-additional-covid-19-cases/2927135207325903/"],
                ["City of El Paso Facebook - April 4, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-el-paso-reaches-triple-digits-in-positive-cases/2924932514212839/"],
                ["City of El Paso Facebook - April 3, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-el-paso-identifies-additional-covid-19-cases/2923000401072717/"],
