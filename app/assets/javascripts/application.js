@@ -9,7 +9,7 @@
 $( document ).ready(function() {
   $('.counter').countUp({
     delay: 10,
-    time: 1000
+    time: 800
   });
 
   $("#totalCasesByZipCode").dataTable({
