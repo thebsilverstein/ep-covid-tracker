@@ -1,10 +1,13 @@
 class DashboardController < ApplicationController
   def index
 
-    @last_updated_on = Time.zone.parse("2020-04-09 4:50:00 PM")
+    @last_updated_on = Time.zone.parse("2020-04-09 5:00:00 PM")
 
     total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9"]
     total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68, 78, 96, 106, 115, 125, 153, 192, 225]
+
+    total_deaths_by_day_categories = ["4/9"]
+    total_deaths_by_day_data = [1]
 
     total_cases_by_age_range_categories = ["12 & Under", "Teens", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"]
     total_cases_by_age_range_data = [3, 7, 34, 41, 34, 32, 20, 13, 4, 4]
@@ -76,7 +79,9 @@ class DashboardController < ApplicationController
              ]
 
     @total_cases = total_cases_by_day_data.last
+    @total_deaths = total_deaths_by_day_data.last
     @new_cases = total_cases_by_day_data.last(2)[1] - total_cases_by_day_data.last(2)[0]
+    @new_deaths = 1#total_deaths_by_day_data.last(2)[1] - total_deaths_by_day_data.last(2)[0]
     max_value = @total_cases_by_zip_code.map { |entry| entry[2] }.max
 
     ##### Globals

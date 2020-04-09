@@ -7,8 +7,20 @@
       <p>Last Updated: <%= @last_updated_on.strftime("%B %e at %l:%M %p") %> MDT <em>(<%= time_ago_in_words(@last_updated_on) %> ago)</em></p>
     </div>
     <div class="col-lg-3 text-center text-lg-right total-cases">
-      <span class="counter"><%= @total_cases %></span>
-      <p>Total Cases</p>
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            <span class="counter"><%= @total_cases %></span>
+            <p>Total Cases</p>
+          </div>
+          <div class="col-6">
+            <span class="counter deaths"><%= @total_deaths %></span>
+            <p>Total Deaths</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -20,8 +32,8 @@
       <div class="container">
         <div class="row">
           <div class="col col-md-10 offset-md-1 text-left">
-            <h2><%= @last_updated_on.strftime("%A, %B %e") %>: <%= pluralize @new_cases, "New Coronavirus Case" %></h2>
-            <p>Face covering use is encouraged for all residents. Health officials implore the community to stay home as the number of cases are expected to accelerate dramatically over the next several weeks. Public and private gatherings of any kind are prohibited. All parks and recreational areas are closed to the public and off limits. <%= link_to "Read More", "http://epstrong.org/faqs.php" %></p>
+            <h2><%= @last_updated_on.strftime("%A, %B %e") %>: <%= pluralize @new_cases, "New Coronavirus Case" %>, <%= pluralize @new_deaths, "New Death" %> </h2>
+            <p>Face covering use is encouraged for all residents. Health officials implore the community to stay home as the number of cases are expected to accelerate dramatically over the next several weeks. <%= link_to "Read More", "http://epstrong.org/faqs.php" %></p>
           </div>
         </div>
       </div>
