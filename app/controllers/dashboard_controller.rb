@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
   def index
 
-    @last_updated_on = Time.zone.parse("2020-04-09 5:05:00 PM")
+    @last_updated_on = Time.zone.parse("2020-04-09 5:15:00 PM")
 
     total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9"]
     total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68, 78, 96, 106, 115, 125, 153, 192, 225]
@@ -11,6 +11,7 @@ class DashboardController < ApplicationController
 
     total_cases_by_age_range_categories = ["12 & Under", "Teens", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"]
     total_cases_by_age_range_data = [3, 7, 34, 41, 34, 32, 20, 13, 4, 4]
+    total_deaths_by_age_range_data = [0, 0, 0, 0, 0, 0, 0, 0, 1, 0]
 
     total_cases_by_gender_male = 91
     total_cases_by_gender_female = 101
@@ -65,7 +66,7 @@ class DashboardController < ApplicationController
                 [79938, [5, 8, 10, 12, 12,  15, 17, 20, 24, ]],
                 ]
 
-    @links = [ ["El Paso Times - April 9, 2020", "https://www.elpasotimes.com/story/news/2020/04/09/coronavirus-el-paso-update-covid-19-confirmed-cases/5125120002/"],
+    @links = [ ["KVIA - April 9, 2020", "https://kvia.com/news/el-paso/2020/04/09/watch-live-at-430-pm-el-paso-officials-give-virus-update/"],
                ["City of El Paso Facebook - April 8, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-el-paso-positive-cases-continue-to-climb/2933837686655655/"],
                ["City of El Paso Facebook - April 7, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/el-paso-sees-largest-spike-in-covid-19-cases/2931741400198617/"],
                ["City of El Paso Facebook - April 6, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-ten-new-cases-new-safety-recommendations/2929484987090925/"],
@@ -89,7 +90,7 @@ class DashboardController < ApplicationController
     @chart_globals = LazyHighCharts::HighChartGlobals.new do |f|
       f.chart(style: { fontFamily: '\'Inter\', sans-serif'})
       f.lang(thousandsSep: ",")
-      f.colors(["#fed907", "#999999", "#8085e9", "#f15c80", "#e4d354"])
+      f.colors(["#fed907", "#f70000", "#8085e9", "#f15c80", "#e4d354"])
     end
 
     ##### Total Cases by Day
@@ -126,6 +127,7 @@ class DashboardController < ApplicationController
     @total_cases_by_age_range = LazyHighCharts::HighChart.new('graph') do |f|
       f.xAxis(title: { enabled: false }, categories: total_cases_by_age_range_categories)
       f.series(name: "Total Cases", data: total_cases_by_age_range_data)
+      f.series(name: "Total Deaths", data: total_deaths_by_age_range_data)
 
       f.yAxis [
         { title: { enabled: false }, allowDecimals: false },
