@@ -110,7 +110,7 @@ class DashboardController < ApplicationController
     
     @total_deaths_by_day = LazyHighCharts::HighChart.new('graph') do |f|
       f.xAxis(title: { enabled: false }, categories: total_deaths_by_day_categories)
-      f.series(name: "Total Cases", data: total_deaths_by_day_data)
+      f.series(name: "Total Deaths", data: total_deaths_by_day_data)
 
       f.yAxis [
         { title: { enabled: false }, allowDecimals: false, max: 10 },
