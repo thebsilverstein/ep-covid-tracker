@@ -65,7 +65,7 @@ class DashboardController < ApplicationController
                 [79938, [5, 8, 10, 12, 12,  15, 17, 20, 24, ]],
                 ]
 
-    @links = [ 
+    @links = [ ["El Paso Times - April 9, 2020", "https://www.elpasotimes.com/story/news/2020/04/09/coronavirus-el-paso-update-covid-19-confirmed-cases/5125120002/"],
                ["City of El Paso Facebook - April 8, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-el-paso-positive-cases-continue-to-climb/2933837686655655/"],
                ["City of El Paso Facebook - April 7, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/el-paso-sees-largest-spike-in-covid-19-cases/2931741400198617/"],
                ["City of El Paso Facebook - April 6, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-ten-new-cases-new-safety-recommendations/2929484987090925/"],
