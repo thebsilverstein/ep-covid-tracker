@@ -1,10 +1,10 @@
 class DashboardController < ApplicationController
   def index
 
-    @last_updated_on = Time.zone.parse("2020-04-08 6:15:00 PM")
+    @last_updated_on = Time.zone.parse("2020-04-09 4:50:00 PM")
 
-    total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8"]
-    total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68, 78, 96, 106, 115, 125, 153, 192]
+    total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9"]
+    total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68, 78, 96, 106, 115, 125, 153, 192, 225]
 
     total_cases_by_age_range_categories = ["12 & Under", "Teens", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"]
     total_cases_by_age_range_data = [3, 7, 34, 41, 34, 32, 20, 13, 4, 4]
@@ -38,33 +38,32 @@ class DashboardController < ApplicationController
     # zip_data_categories_1 = total_cases_by_day_categories.drop(18)
     zip_data_categories_1 = ["3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8"]
 
-    zip_data = [[79821, [1, 1, 1, 1, 1,     1,  1 , 1,  1]],
-                [79835,             [2,     2,  2 , 2,  2]],
-                [79849,    [1, 1, 1, 1,     1,  1 , 1,  2]],
-                [79853,          [1, 1,     1,  1 , 2,  2]],
-                [79902, [2, 2, 2, 2, 2,     2,  2 , 2,  2]],
-                [79903, [                   1,  1 , 1,  2]],
-                [79904, [3, 6, 7, 7, 8,     8,  8 , 8,  9]],
-                [79905, [1, 2, 2, 3, 3,     3,  3 , 3,  10]],
-                [79907, [4, 4, 4, 5, 5,     5,  5 , 8,  8]],
-                [79911, [2, 2, 3, 3, 3,     3,  3 , 3,  3]],
-                [79912, [6, 7, 7, 8, 9,     9,  10, 12, 14]],
-                [79915, [1, 1, 1, 1, 1,     1,  2 , 4,  11]],
-                [79924, [2, 2, 3, 3, 3,     3,  4 , 4,  8]],
-                [79925, [2, 3, 4, 5, 5,     5,  6 , 7,  7]],
-                [79927, [3, 3, 5, 7, 8,     8,  8 , 10, 11]],
-                [79928, [8, 11, 11, 11, 13, 13, 14, 16, 18]],
-                [79930, [                               2]],
-                [79932, [1, 2, 2, 6, 6,     7,  7 , 7,  7]],
-                [79934, [2, 3, 3, 3, 3,     4,  5 , 10, 12]],
-                [79935, [2, 3, 3, 4, 4,     4,  5 , 9,  10]],
-                [79936, [5, 7, 9, 13, 16,   19, 20, 23, 27]],
-                [79938, [5, 8, 10, 12, 12,  15, 17, 20, 24]],
+    zip_data = [[79821, [1, 1, 1, 1, 1,     1,  1 , 1,  1,  ]],
+                [79835,             [2,     2,  2 , 2,  2,  ]],
+                [79849,    [1, 1, 1, 1,     1,  1 , 1,  2,  ]],
+                [79853,          [1, 1,     1,  1 , 2,  2,  ]],
+                [79902, [2, 2, 2, 2, 2,     2,  2 , 2,  2,  ]],
+                [79903, [                   1,  1 , 1,  2,  ]],
+                [79904, [3, 6, 7, 7, 8,     8,  8 , 8,  9,  ]],
+                [79905, [1, 2, 2, 3, 3,     3,  3 , 3,  10, ]],
+                [79907, [4, 4, 4, 5, 5,     5,  5 , 8,  8,  ]],
+                [79911, [2, 2, 3, 3, 3,     3,  3 , 3,  3,  ]],
+                [79912, [6, 7, 7, 8, 9,     9,  10, 12, 14, ]],
+                [79915, [1, 1, 1, 1, 1,     1,  2 , 4,  11, ]],
+                [79924, [2, 2, 3, 3, 3,     3,  4 , 4,  8,  ]],
+                [79925, [2, 3, 4, 5, 5,     5,  6 , 7,  7,  ]],
+                [79927, [3, 3, 5, 7, 8,     8,  8 , 10, 11, ]],
+                [79928, [8, 11, 11, 11, 13, 13, 14, 16, 18, ]],
+                [79930, [                               2,  ]],
+                [79932, [1, 2, 2, 6, 6,     7,  7 , 7,  7,  ]],
+                [79934, [2, 3, 3, 3, 3,     4,  5 , 10, 12, ]],
+                [79935, [2, 3, 3, 4, 4,     4,  5 , 9,  10, ]],
+                [79936, [5, 7, 9, 13, 16,   19, 20, 23, 27, ]],
+                [79938, [5, 8, 10, 12, 12,  15, 17, 20, 24, ]],
                 ]
 
-    
-
-    @links = [ ["City of El Paso Facebook - April 8, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-el-paso-positive-cases-continue-to-climb/2933837686655655/"],
+    @links = [ ["City of El Paso Facebook - April 9, 2020", ""],
+               ["City of El Paso Facebook - April 8, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-el-paso-positive-cases-continue-to-climb/2933837686655655/"],
                ["City of El Paso Facebook - April 7, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/el-paso-sees-largest-spike-in-covid-19-cases/2931741400198617/"],
                ["City of El Paso Facebook - April 6, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-ten-new-cases-new-safety-recommendations/2929484987090925/"],
                ["City of El Paso Facebook - April 5, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-el-paso-identifies-additional-covid-19-cases/2927135207325903/"],
