@@ -104,7 +104,7 @@ class DashboardController < ApplicationController
       ]
 
       f.legend(enabled: false)
-      f.chart({defaultSeriesType: "column"})
+      f.chart({defaultSeriesType: "area"})
     end
 
     ##### Total Deaths by Day
