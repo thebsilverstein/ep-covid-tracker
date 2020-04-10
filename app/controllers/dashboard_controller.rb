@@ -163,7 +163,7 @@ class DashboardController < ApplicationController
         f.series(name: "Total Cases", data: data)
 
         f.yAxis [
-          { title: { enabled: false }, allowDecimals: false, max: max_value },
+          { title: { enabled: false }, allowDecimals: false, max: max_value, tickAmount: 4 },
         ]
 
         f.legend(enabled: false)
