@@ -5,9 +5,12 @@ class DashboardController < ApplicationController
 
     total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12"]
     total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68, 78, 96, 106, 115, 125, 153, 192, 225, 252, 269, 292]
+    total_cases_by_day_max = 300
+    new_cases_by_day_max = 40
 
     total_deaths_by_day_categories = ["4/9", "4/10", "4/11", "4/12"]
     total_deaths_by_day_data = [1, 2, 2, 2]
+    total_deaths_by_day_max = 10
 
     total_cases_by_age_range_categories = ["12 & Under", "Teens", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"]
     total_cases_by_age_range_data = [4, 10, 53, 62, 50, 55, 28, 17, 6, 7]
@@ -110,7 +113,7 @@ class DashboardController < ApplicationController
       f.series(name: "Total Cases", data: total_cases_by_day_data)
 
       f.yAxis [
-        { title: { enabled: false }, allowDecimals: false, max: 300 },
+        { title: { enabled: false }, allowDecimals: false, max: total_cases_by_day_max },
       ]
 
       f.legend(enabled: false)
@@ -130,7 +133,7 @@ class DashboardController < ApplicationController
       f.series(name: "New Cases", data: new_cases_by_day_data)
 
       f.yAxis [
-        { title: { enabled: false }, allowDecimals: false },
+        { title: { enabled: false }, allowDecimals: false, max: new_cases_by_day_max },
       ]
 
       f.legend(enabled: false)
@@ -144,7 +147,7 @@ class DashboardController < ApplicationController
       f.series(name: "Total Deaths", data: total_deaths_by_day_data)
 
       f.yAxis [
-        { title: { enabled: false }, allowDecimals: false, max: 10 },
+        { title: { enabled: false }, allowDecimals: false, max: total_deaths_by_day_max },
       ]
 
       f.colors(["#f70000"])
