@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
   def index
 
-    @last_updated_on = Time.zone.parse("2020-04-13 3:56:00 PM")
+    @last_updated_on = Time.zone.parse("2020-04-13 6:10:00 PM")
 
     total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13"]
     total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68, 78, 96, 106, 115, 125, 153, 192, 225, 252, 269, 292, 300]
@@ -18,6 +18,9 @@ class DashboardController < ApplicationController
 
     total_cases_by_gender_male = 147
     total_cases_by_gender_female = 153
+
+    patients_in_icu_categories = ["4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13"]
+    patients_in_icu_data = [8, 8, 10, 10, 10, 12, 19, 21, 22, 23, 23]
 
     @total_cases_by_zip_code = [ [79821, "https://goo.gl/maps/fyDXByr3a6WyCLfh9", 1],
                                  [79835, "https://goo.gl/maps/WFSWehxhFTNPUVLb8", 3],
@@ -153,7 +156,7 @@ class DashboardController < ApplicationController
 
       f.colors(["#f70000"])
       f.legend(enabled: false)
-      f.chart({defaultSeriesType: "column"})
+      f.chart({defaultSeriesType: "column", height: 300})
     end
 
     ##### Total Cases by Age Range
@@ -182,6 +185,20 @@ class DashboardController < ApplicationController
       # ]
       f.colors(["#999999", "#666666"])
       f.chart({defaultSeriesType: "pie", height: 300})
+    end
+
+    ##### Patients in ICU
+    
+    @patients_in_icu = LazyHighCharts::HighChart.new('graph') do |f|
+      f.xAxis(title: { enabled: false }, categories: patients_in_icu_categories)
+      f.series(name: "Patients", data: patients_in_icu_data)
+
+      f.yAxis [
+        { title: { enabled: false }, allowDecimals: false, max: 75, tickAmount: 4 },
+      ]
+
+      f.legend(enabled: false)
+      f.chart({defaultSeriesType: "column", height: 300})
     end
 
     ##### Total Cases by Zip Code
