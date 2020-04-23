@@ -1,87 +1,88 @@
 class DashboardController < ApplicationController
   def index
 
-    @last_updated_on = Time.zone.parse("2020-04-21 6:58:00 PM")
+    @last_updated_on = Time.zone.parse("2020-04-22 6:24:00 PM")
 
-    total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21"]
-    total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68, 78, 96, 106, 115, 125, 153, 192, 225, 252, 269, 292, 300, 346, 393, 451, 482, 505, 531, 540, 587]
-    total_cases_by_day_max = 600
+    total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22"]
+    total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68, 78, 96, 106, 115, 125, 153, 192, 225, 252, 269, 292, 300, 346, 393, 451, 482, 505, 531, 540, 587, 645]
+    total_cases_by_day_max = 650
     new_cases_by_day_max = 60
 
-    total_deaths_by_day_categories = ["4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21"]
-    total_deaths_by_day_data = [1, 2, 2, 2, 2, 4, 6, 7, 7, 8, 8, 9, 9]
-    total_deaths_by_day_max = 10
+    total_deaths_by_day_categories = ["4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22"]
+    total_deaths_by_day_data = [1, 2, 2, 2, 2, 4, 6, 7, 7, 8, 8, 9, 9, 10]
+    total_deaths_by_day_max = 15
 
-    patients_in_icu_categories = ["4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21"]
-    patients_in_icu_data = [8, 8, 10, 10, 10, 12, 19, 21, 22, 23, 23, 26, 27, 10, 11, 10, 8, 13, 13]
+    patients_in_icu_categories = ["4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22"]
+    patients_in_icu_data = [8, 8, 10, 10, 10, 12, 19, 21, 22, 23, 23, 26, 27, 10, 11, 10, 8, 13, 13, 18]
 
     total_cases_by_age_range_categories = ["12 & Under", "Teens", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"]
-    total_cases_by_age_range_data = [15, 28, 112, 111, 98, 99, 64, 39, 13, 8]
-    total_deaths_by_age_range_data = [0, 0, 0, 0, 0, 1, 2, 4, 2, 0]
+    total_cases_by_age_range_data = [16, 31, 121, 127, 108, 107, 71, 39, 17, 8]
+    total_deaths_by_age_range_data = [0, 0, 0, 0, 0, 1, 2, 5, 2, 0]
 
-    total_cases_by_gender_male = 283
-    total_cases_by_gender_female = 304
+    total_cases_by_gender_male = 313
+    total_cases_by_gender_female = 332
 
     @total_cases_by_zip_code = [ [79821, "https://goo.gl/maps/fyDXByr3a6WyCLfh9", 1],
                                  [79835, "https://goo.gl/maps/WFSWehxhFTNPUVLb8", 7],
-                                 [79836, "https://goo.gl/maps/mphTKm8jo7MZAmZN8", 2],
-                                 [79838, "https://goo.gl/maps/LsXCW6txwEeGv4wH6", 7],
-                                 [79849, "https://goo.gl/maps/48ZtmYoSB18FMxei9", 6],
+                                 [79836, "https://goo.gl/maps/mphTKm8jo7MZAmZN8", 4],
+                                 [79838, "https://goo.gl/maps/LsXCW6txwEeGv4wH6", 8],
+                                 [79849, "https://goo.gl/maps/48ZtmYoSB18FMxei9", 9],
                                  [79853, "https://goo.gl/maps/94CsB2nh12CsY12V7", 8],
                                  [79902, "https://goo.gl/maps/GhAYCydGe7sceeqBA", 7],
-                                 [79903, "https://goo.gl/maps/njkWwDrBedvfJ3pdA", 14 ],
-                                 [79904, "https://goo.gl/maps/ShNJW7b9ukMkgdsW9", 17 ],
-                                 [79905, "https://goo.gl/maps/FaPYhZkQQivu5bpP7", 32 ],
-                                 [79907, "https://goo.gl/maps/JU1tEasu4SF4Morf7", 28 ],
+                                 [79903, "https://goo.gl/maps/njkWwDrBedvfJ3pdA", 18 ],
+                                 [79904, "https://goo.gl/maps/ShNJW7b9ukMkgdsW9", 20 ],
+                                 [79905, "https://goo.gl/maps/FaPYhZkQQivu5bpP7", 36 ],
+                                 [79907, "https://goo.gl/maps/JU1tEasu4SF4Morf7", 30 ],
                                  [79911, "https://goo.gl/maps/ra1N74NDxhGZosh18", 3],
-                                 [79912, "https://goo.gl/maps/Kz49kbnE2EzADkvt9", 44 ],
-                                 [79915, "https://goo.gl/maps/kzwmzKxRakK6ssRa6", 32 ],
+                                 [79912, "https://goo.gl/maps/Kz49kbnE2EzADkvt9", 50 ],
+                                 [79915, "https://goo.gl/maps/kzwmzKxRakK6ssRa6", 34 ],
                                  [79922, "https://goo.gl/maps/a68MXDGZSk2jr9u7A", 4],
-                                 [79924, "https://goo.gl/maps/U9yL1pJQTKv2riS56", 27 ],
-                                 [79925, "https://goo.gl/maps/gTb8iXhw6RBuHPpu7", 24 ],
-                                 [79927, "https://goo.gl/maps/nquJLGWtgKiU3Z4o7", 24 ],
-                                 [79928, "https://goo.gl/maps/XwoKG1sLG1FiEBwE9", 45 ],
-                                 [79930, "https://goo.gl/maps/uwWrGWqbYkCqTpv99", 15 ],
-                                 [79932, "https://goo.gl/maps/YKuWPdsoiejNWvnh6", 21 ],
-                                 [79934, "https://goo.gl/maps/ozgMKwoosWHWtDGPA", 25 ],
+                                 [79924, "https://goo.gl/maps/U9yL1pJQTKv2riS56", 28 ],
+                                 [79925, "https://goo.gl/maps/gTb8iXhw6RBuHPpu7", 26 ],
+                                 [79927, "https://goo.gl/maps/nquJLGWtgKiU3Z4o7", 26 ],
+                                 [79928, "https://goo.gl/maps/XwoKG1sLG1FiEBwE9", 47 ],
+                                 [79930, "https://goo.gl/maps/uwWrGWqbYkCqTpv99", 18 ],
+                                 [79932, "https://goo.gl/maps/YKuWPdsoiejNWvnh6", 25 ],
+                                 [79934, "https://goo.gl/maps/ozgMKwoosWHWtDGPA", 26 ],
                                  [79935, "https://goo.gl/maps/jiS5uroU4meDaET68", 20 ],
-                                 [79936, "https://goo.gl/maps/8bzvY2hcPK8qUcWu9", 91 ],
-                                 [79938, "https://goo.gl/maps/jNF1sLZ61ubkvohR9", 83 ], ]
+                                 [79936, "https://goo.gl/maps/8bzvY2hcPK8qUcWu9", 96 ],
+                                 [79938, "https://goo.gl/maps/jNF1sLZ61ubkvohR9", 94 ], ]
 
     # zip_data_categories_1 = total_cases_by_day_categories.drop(18)
-    zip_data_categories_1 = ["3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21"]
+    zip_data_categories_1 = ["3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22"]
 
-    zip_data = [[79821, [1, 1, 1, 1, 1,     1,  1 , 1,  1,  1,  1 , 1,  1,   1,  1,   1,   1,  1,  1,  1,  1,  1]],
-                [79835,             [2,     2,  2 , 2,  2,  2,  2 , 2,  2,   3,  4,   6,   7,  7,  7,  7,  7,  7]],
-                [79836, [                                                             1,   1,  1,  1,  2,  2,  2]],
-                [79838, [                                           1,  1,   1,  1,   2,   3,  5,  5,  6,  6,  7]],
-                [79849,    [1, 1, 1, 1,     1,  1 , 1,  2,  3,  3 , 3,  3,   3,  4,   5,   5,  5,  5,  6,  6,  6]],
-                [79853,          [1, 1,     1,  1 , 2,  2,  2,  2 , 2,  2,   2,  2,   2,   3,  3,  4,  7,  7,  8]],
-                [79902, [2, 2, 2, 2, 2,     2,  2 , 2,  2,  2,  2 , 2,  3,   3,  4,   6,   6,  6,  6,  6,  6,  7]],
-                [79903, [                   1,  1 , 1,  2,  2,  2 , 5,  8,   8,  8,   9,   11, 11, 11, 12, 13, 14]],
-                [79904, [3, 6, 7, 7, 8,     8,  8 , 8,  9,  9,  9 , 10, 10,  10, 10,  13,  14, 15, 15, 15, 15, 17]],
-                [79905, [1, 2, 2, 3, 3,     3,  3 , 3,  10, 15, 15, 14, 16,  16, 17,  20,  23, 24, 24, 28, 29, 32]],
-                [79907, [4, 4, 4, 5, 5,     5,  5 , 8,  8,  9,  9 , 11, 11,  11, 16,  19,  23, 24, 24, 26, 26, 28]],
-                [79911, [2, 2, 3, 3, 3,     3,  3 , 3,  3,  3,  3 , 3,  3,   3,  3,   3,   3,  3,  3,  3,  3,  3]],
-                [79912, [6, 7, 7, 8, 9,     9,  10, 12, 14, 20, 24, 25, 25,  27, 29,  32,  38, 39, 40, 40, 40, 44]],
-                [79915, [1, 1, 1, 1, 1,     1,  2 , 4,  11, 12, 13, 13, 14,  15, 19,  23,  27, 28, 29, 31, 32, 32]],
-                [79922, [                                           1,  1,   2,  2,   2,   4,  4,  4,  4,  4,  4]],
-                [79924, [2, 2, 3, 3, 3,     3,  4 , 4,  8,  10, 12, 15, 15,  15, 18,  18,  21, 21, 22, 22, 22, 27]],
-                [79925, [2, 3, 4, 5, 5,     5,  6 , 7,  7,  8,  9 , 9,  9,   9,  10,  10,  13, 13, 16, 18, 21, 24]],
-                [79927, [3, 3, 5, 7, 8,     8,  8 , 10, 11, 12, 13, 15, 16,  16, 18,  18,  20, 20, 20, 20, 20, 24]],
-                [79928, [8, 11, 11, 11, 13, 13, 14, 16, 18, 21, 22, 23, 25,  25, 28,  32,  36, 37, 39, 43, 44, 45]],
-                [79930, [                               2,  2,  2 , 2,  3,   3,  4,   7,   8,  10, 12, 14, 14, 15]],
-                [79932, [1, 2, 2, 6, 6,     7,  7 , 7,  7,  9,  11, 11, 11,  11, 15,  16,  19, 20, 20, 20, 20, 21]],
-                [79934, [2, 3, 3, 3, 3,     4,  5 , 10, 12, 14, 14, 15, 16,  16, 17,  18,  20, 22, 22, 22, 22, 25]],
-                [79935, [2, 3, 3, 4, 4,     4,  5 , 9,  10, 11, 11, 12, 13,  13, 14,  16,  14, 15, 17, 18, 18, 20]],
-                [79936, [5, 7, 9, 13, 16,   19, 20, 23, 27, 30, 38, 42, 48,  49, 57,  66,  72, 77, 84, 85, 86, 91]],
-                [79938, [5, 8, 10, 12, 12,  15, 17, 20, 24, 28, 35, 32, 36,  38, 45,  48,  59, 71, 74, 75, 76, 83]],
+    zip_data = [[79821, [1, 1, 1, 1, 1,     1,  1 , 1,  1,  1,  1 , 1,  1,   1,  1,   1,   1,  1,  1,  1,  1,  1,  1]],
+                [79835,             [2,     2,  2 , 2,  2,  2,  2 , 2,  2,   3,  4,   6,   7,  7,  7,  7,  7,  7,  7]],
+                [79836, [                                                             1,   1,  1,  1,  2,  2,  2,  4]],
+                [79838, [                                           1,  1,   1,  1,   2,   3,  5,  5,  6,  6,  7,  8]],
+                [79849,    [1, 1, 1, 1,     1,  1 , 1,  2,  3,  3 , 3,  3,   3,  4,   5,   5,  5,  5,  6,  6,  6,  9]],
+                [79853,          [1, 1,     1,  1 , 2,  2,  2,  2 , 2,  2,   2,  2,   2,   3,  3,  4,  7,  7,  8,  8]],
+                [79902, [2, 2, 2, 2, 2,     2,  2 , 2,  2,  2,  2 , 2,  3,   3,  4,   6,   6,  6,  6,  6,  6,  7,  7]],
+                [79903, [                   1,  1 , 1,  2,  2,  2 , 5,  8,   8,  8,   9,   11, 11, 11, 12, 13, 14, 18 ]],
+                [79904, [3, 6, 7, 7, 8,     8,  8 , 8,  9,  9,  9 , 10, 10,  10, 10,  13,  14, 15, 15, 15, 15, 17, 20 ]],
+                [79905, [1, 2, 2, 3, 3,     3,  3 , 3,  10, 15, 15, 14, 16,  16, 17,  20,  23, 24, 24, 28, 29, 32, 36 ]],
+                [79907, [4, 4, 4, 5, 5,     5,  5 , 8,  8,  9,  9 , 11, 11,  11, 16,  19,  23, 24, 24, 26, 26, 28, 30 ]],
+                [79911, [2, 2, 3, 3, 3,     3,  3 , 3,  3,  3,  3 , 3,  3,   3,  3,   3,   3,  3,  3,  3,  3,  3,  3]],
+                [79912, [6, 7, 7, 8, 9,     9,  10, 12, 14, 20, 24, 25, 25,  27, 29,  32,  38, 39, 40, 40, 40, 44, 50 ]],
+                [79915, [1, 1, 1, 1, 1,     1,  2 , 4,  11, 12, 13, 13, 14,  15, 19,  23,  27, 28, 29, 31, 32, 32, 34 ]],
+                [79922, [                                           1,  1,   2,  2,   2,   4,  4,  4,  4,  4,  4,  4]],
+                [79924, [2, 2, 3, 3, 3,     3,  4 , 4,  8,  10, 12, 15, 15,  15, 18,  18,  21, 21, 22, 22, 22, 27, 28 ]],
+                [79925, [2, 3, 4, 5, 5,     5,  6 , 7,  7,  8,  9 , 9,  9,   9,  10,  10,  13, 13, 16, 18, 21, 24, 26 ]],
+                [79927, [3, 3, 5, 7, 8,     8,  8 , 10, 11, 12, 13, 15, 16,  16, 18,  18,  20, 20, 20, 20, 20, 24, 26 ]],
+                [79928, [8, 11, 11, 11, 13, 13, 14, 16, 18, 21, 22, 23, 25,  25, 28,  32,  36, 37, 39, 43, 44, 45, 47 ]],
+                [79930, [                               2,  2,  2 , 2,  3,   3,  4,   7,   8,  10, 12, 14, 14, 15, 18 ]],
+                [79932, [1, 2, 2, 6, 6,     7,  7 , 7,  7,  9,  11, 11, 11,  11, 15,  16,  19, 20, 20, 20, 20, 21, 25 ]],
+                [79934, [2, 3, 3, 3, 3,     4,  5 , 10, 12, 14, 14, 15, 16,  16, 17,  18,  20, 22, 22, 22, 22, 25, 26 ]],
+                [79935, [2, 3, 3, 4, 4,     4,  5 , 9,  10, 11, 11, 12, 13,  13, 14,  16,  14, 15, 17, 18, 18, 20, 20 ]],
+                [79936, [5, 7, 9, 13, 16,   19, 20, 23, 27, 30, 38, 42, 48,  49, 57,  66,  72, 77, 84, 85, 86, 91, 96 ]],
+                [79938, [5, 8, 10, 12, 12,  15, 17, 20, 24, 28, 35, 32, 36,  38, 45,  48,  59, 71, 74, 75, 76, 83, 94 ]],
                 ]
 
     tick_amount = 5
     max_value = @total_cases_by_zip_code.map { |entry| entry[2] }.max
 
-    @links = [ ["City of El Paso Facebook - April 21, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-city-moves-into-phase-iii-for-drive-thru-specimen-collection/2964709783568445/"],
+    @links = [ ["City of El Paso Facebook - April 22, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-el-paso-reports-one-additional-covid-19-death/2967347239971366/"],
+               ["City of El Paso Facebook - April 21, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-city-moves-into-phase-iii-for-drive-thru-specimen-collection/2964709783568445/"],
                ["City of El Paso Facebook - April 20, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-el-paso-reports-one-covid-19-death-additional-cases/2962203613819062/"],
                ["City of El Paso Facebook - April 19, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/residents-urged-not-to-become-complacent/2959832750722815/"],
                ["City of El Paso Facebook - April 18, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-officials-report-additional-covid-19-death/2957418227630934/"],
