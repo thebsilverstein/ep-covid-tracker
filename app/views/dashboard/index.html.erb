@@ -33,7 +33,7 @@
         <div class="row">
           <div class="col col-md-10 offset-md-1 text-left">
             <h2><%= @last_updated_on.strftime("%A, %B %e") %>:<br><%= pluralize @new_cases, "New Coronavirus Case" %>, <%= pluralize @new_deaths, "New Death" %> </h2>
-            <p>Stay Home, Work Safe orders have been extended through May 17 and residents are directed to stay home and only go out for essential business. Code enforcement officers are responding to incidents where businesses and individuals are violating the order. <%= link_to "Read More", "http://epstrong.org/faqs.php" %></p>
+            <p class="text-center">El Paso County residents are now required to wear face coverings in public. <%= link_to "Read More", "http://epstrong.org/faqs.php" %></p>
           </div>
         </div>
       </div>
@@ -113,7 +113,7 @@
   </div>
   <div class="row mt-5">
       <% @total_cases_by_individual_zip_code.each do |zip_code, chart| %>
-        <div class="col-md-6 col-lg-4 col-xl-3 chart-individual-zip-code mb-5">
+        <div class="col-md-6 col-lg-4 chart-individual-zip-code mb-5">
           <h3>Total Cases in <%= link_to zip_code, @total_cases_by_zip_code.find { |point| point[0] == zip_code }[1] %></h3>
           <%=  %>
           <%= high_chart("total_cases_by_individual_zip_code_#{zip_code}", chart) %>
