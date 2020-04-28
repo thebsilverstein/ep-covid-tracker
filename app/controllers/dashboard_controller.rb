@@ -8,6 +8,9 @@ class DashboardController < ApplicationController
     total_cases_by_day_max = 900
     new_cases_by_day_max = 80
 
+    # total_cases_by_day_categories = ["3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27"]
+    total_recoveries_by_day_data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 9, 9, 10, 10, 16, 18, 18, 20, 29, 33, 33, 35, 41, 44, 48, 62, 63, 64, 67, 70, 80, 100, 121, 122, 184, 185, 265]
+
     total_deaths_by_day_categories = ["4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27"]
     total_deaths_by_day_data = [1, 2, 2, 2, 2, 4, 6, 7, 7, 8, 8, 9, 9, 10, 10, 10, 12, 12, 12]
     total_deaths_by_day_max = 15
@@ -132,31 +135,40 @@ class DashboardController < ApplicationController
     @total_cases_by_day = LazyHighCharts::HighChart.new('graph') do |f|
       f.xAxis(title: { enabled: false }, categories: total_cases_by_day_categories)
       f.series(name: "Total Cases", data: total_cases_by_day_data)
+      f.series(name: "Total Recoveries", data: total_recoveries_by_day_data)
 
       f.yAxis [
         { title: { enabled: false }, allowDecimals: false, max: total_cases_by_day_max },
       ]
 
-      f.legend(enabled: false)
+      f.colors(["#fed907", "#26dc4e"])
+      # f.legend(enabled: false)
       f.chart({defaultSeriesType: "area"})
     end
 
     ##### New Cases by Day
     
     new_cases_by_day_data = []
+    new_recoveries_by_day_data = []
 
     for i in (1..total_cases_by_day_data.size - 1)
       new_cases_by_day_data += [total_cases_by_day_data[i] - total_cases_by_day_data[i - 1]]
     end
 
+    for i in (1..total_recoveries_by_day_data.size - 1)
+      new_recoveries_by_day_data += [total_recoveries_by_day_data[i] - total_recoveries_by_day_data[i - 1]]
+    end
+
     @new_cases_by_day = LazyHighCharts::HighChart.new('graph') do |f|
       f.xAxis(title: { enabled: false }, categories: total_cases_by_day_categories.drop(1))
       f.series(name: "New Cases", data: new_cases_by_day_data)
+      # f.series(name: "New Recoveries", data: new_recoveries_by_day_data)
 
       f.yAxis [
         { title: { enabled: false }, allowDecimals: false, max: new_cases_by_day_max },
       ]
 
+      f.colors(["#fed907", "#26dc4e"])
       f.legend(enabled: false)
       f.chart({defaultSeriesType: "column"})
     end
