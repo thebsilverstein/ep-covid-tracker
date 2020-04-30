@@ -52,7 +52,10 @@ body {
   p {
     padding: 0;
     margin: 0;
-    font-size: 0.9em;
+    font-size: 0.7em;
+    @media(min-width: 500px) {
+      font-size: 0.9em;
+    }
   }
   span {
     color: #fed907;
@@ -62,6 +65,9 @@ body {
     line-height: 1.0em;
     &.deaths {
       color: #f70000;
+    }
+    &.recoveries {
+      color: #26dc4e;
     }
   }
 }
