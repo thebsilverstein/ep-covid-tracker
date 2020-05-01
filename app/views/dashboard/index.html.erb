@@ -142,11 +142,18 @@
   <div class="row">
     <div class="col">
       <h4>Data Sources</h4>
-      <ul>
-        <% for link in @links %>
-          <li><%= link_to link[0], link[1] %></li>
+
+      <div class="row">
+        <% for group in @links.in_groups_of((@links.size.to_f / 3).ceil, false) %>
+          <div class="col-12 col-md-4">
+            <ul>
+              <% for link in group %>
+                <li><%= link_to link[0], link[1] %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+      </div>
     </div>
   </div>
 </div>
