@@ -145,7 +145,7 @@ class DashboardController < ApplicationController
       f.series(name: "Total Recoveries", data: total_recoveries_by_day_data)
 
       f.yAxis [
-        { title: { enabled: false }, allowDecimals: false, max: total_cases_by_day_max, tickAmount: 7 },
+        { title: { enabled: false }, allowDecimals: false, max: total_cases_by_day_max, tickAmount: 12 },
       ]
 
       f.colors(["#fed907", "#26dc4e"])
