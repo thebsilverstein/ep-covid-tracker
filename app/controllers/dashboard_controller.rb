@@ -203,7 +203,7 @@ class DashboardController < ApplicationController
       f.series(name: "Total Deaths", data: total_deaths_by_age_range_data)
 
       f.yAxis [
-        { title: { enabled: false }, allowDecimals: false },
+        { title: { enabled: false }, allowDecimals: false, max: 200 },
       ]
 
       f.legend(enabled: false)
