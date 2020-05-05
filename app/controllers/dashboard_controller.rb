@@ -21,8 +21,8 @@ class DashboardController < ApplicationController
     total_cases_by_age_range_data = [46, 47, 199, 193, 151, 166, 123, 65, 26, 13]
     total_deaths_by_age_range_data = [0, 0, 0, 0, 0, 4, 6, 8, 3, 1]
 
-    total_cases_by_gender_male = 467
-    total_cases_by_gender_female = 522
+    total_cases_by_gender_male = 489
+    total_cases_by_gender_female = 540
 
     @total_cases_by_zip_code = [ [79821, "https://goo.gl/maps/fyDXByr3a6WyCLfh9", 2 ],
                                  [79835, "https://goo.gl/maps/WFSWehxhFTNPUVLb8", 27 ],
