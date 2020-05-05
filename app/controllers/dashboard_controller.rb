@@ -85,7 +85,7 @@ class DashboardController < ApplicationController
     tick_amount = 9
     max_value = @total_cases_by_zip_code.map { |entry| entry[2] }.max
 
-    @links = [ ["City of El Paso Facebook - May 4, 2020", ""],
+    @links = [ ["City of El Paso Facebook - May 4, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-positive-cases-reach-over-one-thousand/2996223767083713/"],
                ["City of El Paso Facebook - May 3, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/hospitalizations-numbers-decrease-community-reminded-to-remain-vigilant/2993828630656560/"],
                ["City of El Paso Facebook - May 2, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-officials-urge-residents-to-abide-by-directive/2991387660900657/"],
                ["City of El Paso Facebook - May 1, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/city-reports-one-covid-19-death-urges-residents-to-abide-local-directive/2989215137784576/"],
