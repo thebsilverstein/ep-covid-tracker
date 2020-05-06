@@ -6,16 +6,17 @@ class DashboardController < ApplicationController
     total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5"]
     total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68, 78, 96, 106, 115, 125, 153, 192, 225, 252, 269, 292, 300, 346, 393, 451, 482, 505, 531, 540, 587, 645, 674, 706, 780, 802, 829, 857, 887, 924, 961, 986, 998, 1029, 1080]
     total_cases_by_day_max = 1100
+    total_cases_by_day_tick_amount = 12
     new_cases_by_day_max = 80
 
     total_recoveries_by_day_data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 9, 9, 10, 10, 16, 18, 18, 20, 29, 33, 33, 35, 41, 44, 48, 62, 63, 64, 67, 70, 80, 100, 121, 122, 184, 185, 265, 295, 334, 397, 419, 455, 474, 486, 514]
 
-    total_deaths_by_day_categories = ["4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5"]
     total_deaths_by_day_data = [1, 2, 2, 2, 2, 4, 6, 7, 7, 8, 8, 9, 9, 10, 10, 10, 12, 12, 12, 14, 18, 21, 22, 22, 22, 22, 22]
     total_deaths_by_day_max = 30
-
-    patients_in_icu_categories = ["4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5"]
+    
+    patients_hospitalized_data = [19, 26, 27, 27, 27, 40, 48, 52, 48, 57, 58, 61, 65, 48, 38, 25, 29, 38, 37, 35, 33, 38, 36, 38, 35, 35, 52, 53, 58, 61, 59, 65, 71]
     patients_in_icu_data = [8, 8, 10, 10, 10, 12, 19, 21, 22, 23, 23, 26, 27, 10, 11, 10, 8, 13, 13, 18, 21, 26, 16, 18, 19, 19, 27, 31, 30, 39, 21, 38, 40]
+    patients_max_value = 80
 
     total_cases_by_age_range_categories = ["12 & Under", "Teens", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"]
     total_cases_by_age_range_data = [49, 47, 205, 205, 158, 172, 135, 70, 26, 13]
@@ -51,9 +52,6 @@ class DashboardController < ApplicationController
                                  [79936, "https://goo.gl/maps/8bzvY2hcPK8qUcWu9", 144 ],
                                  [79938, "https://goo.gl/maps/jNF1sLZ61ubkvohR9", 161 ], ]
 
-    # zip_data_categories_1 = total_cases_by_day_categories.drop(18)
-    zip_data_categories_1 = ["3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5"]
-
     zip_data = [[79821, [1, 1, 1, 1, 1,     1,  1 , 1,  1,  1,  1 , 1,  1,   1,  1,   1,   1,  1,  1,  1,  1,  1,  1,  1,  1,   2,   2,   2,   2,   2,   2,   2,   2,   2,   2,   2]],
                 [79835,             [2,     2,  2 , 2,  2,  2,  2 , 2,  2,   3,  4,   6,   7,  7,  7,  7,  7,  7,  7,  8,  8,   12,  12,  13,  14,  19,  21,  27,  27,  27,  27,  30]],
                 [79836, [                                                             1,   1,  1,  1,  2,  2,  2,  4,  4,  4,   4,   4,   4,   5,   5,   5,   5,   5,   5,   6,   6]],
@@ -82,8 +80,7 @@ class DashboardController < ApplicationController
                 [79938, [5, 8, 10, 12, 12,  15, 17, 20, 24, 28, 35, 32, 36,  38, 45,  48,  59, 71, 74, 75, 76, 83, 94, 101,102, 110, 116, 120, 124, 127, 130, 140, 146, 151, 157, 161]],
                 ]
 
-    tick_amount = 8
-    max_value = @total_cases_by_zip_code.map { |entry| entry[2] }.max
+    zip_data_tick_amount = 8
 
     @links = [ ["City of El Paso Facebook - May 5, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/case-numbers-continue-increasing-residents-urged-to-wear-face-coverings/2998656446840445/"],
                ["City of El Paso Facebook - May 4, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/covid-19-update-positive-cases-reach-over-one-thousand/2996223767083713/"],
@@ -124,11 +121,20 @@ class DashboardController < ApplicationController
                ["El Paso Matters - March 30, 2020", "https://elpasomatters.org/2020/03/30/el-paso-has-begun-showing-general-location-of-covid-19-positive-tests/"]
              ]
 
+    
+
     @total_cases = total_cases_by_day_data.last
     @total_recoveries = total_recoveries_by_day_data.last
     @total_deaths = total_deaths_by_day_data.last
     @new_cases = total_cases_by_day_data.last(2)[1] - total_cases_by_day_data.last(2)[0]
     @new_deaths = total_deaths_by_day_data.last(2)[1] - total_deaths_by_day_data.last(2)[0]
+
+    total_deaths_by_day_categories = total_cases_by_day_categories.last(total_deaths_by_day_data.size)
+    patients_hospitalized_categories = total_cases_by_day_categories.last(patients_in_icu_data.size)
+    patients_in_icu_categories = total_cases_by_day_categories.last(patients_in_icu_data.size)
+    zip_data_categories_1 = total_cases_by_day_categories.last(zip_data[0][1].size)
+
+    zip_data_max_value = @total_cases_by_zip_code.map { |entry| entry[2] }.max
     
     ##### Globals
 
@@ -138,7 +144,7 @@ class DashboardController < ApplicationController
       f.colors(["#fed907", "#f70000", "#8085e9", "#f15c80", "#e4d354"])
     end
 
-    ##### Total Cases by Day
+    ##### Total Cases and Recoveries by Day
     
     @total_cases_by_day = LazyHighCharts::HighChart.new('graph') do |f|
       f.xAxis(title: { enabled: false }, categories: total_cases_by_day_categories)
@@ -146,7 +152,7 @@ class DashboardController < ApplicationController
       f.series(name: "Total Recoveries", data: total_recoveries_by_day_data)
 
       f.yAxis [
-        { title: { enabled: false }, allowDecimals: false, max: total_cases_by_day_max, tickAmount: 12 },
+        { title: { enabled: false }, allowDecimals: false, max: total_cases_by_day_max, tickAmount: total_cases_by_day_tick_amount },
       ]
 
       f.colors(["#fed907", "#26dc4e"])
@@ -224,6 +230,20 @@ class DashboardController < ApplicationController
       f.chart({defaultSeriesType: "pie", height: 300})
     end
 
+    ##### Patients in Hospital
+    
+    @patients_hospitalized = LazyHighCharts::HighChart.new('graph') do |f|
+      f.xAxis(title: { enabled: false }, categories: patients_hospitalized_categories)
+      f.series(name: "Patients", data: patients_hospitalized_data)
+
+      f.yAxis [
+        { title: { enabled: false }, allowDecimals: false, max: patients_max_value, tickAmount: 5 },
+      ]
+
+      f.legend(enabled: false)
+      f.chart({defaultSeriesType: "column", height: 300})
+    end
+
     ##### Patients in ICU
     
     @patients_in_icu = LazyHighCharts::HighChart.new('graph') do |f|
@@ -231,7 +251,7 @@ class DashboardController < ApplicationController
       f.series(name: "Patients", data: patients_in_icu_data)
 
       f.yAxis [
-        { title: { enabled: false }, allowDecimals: false },
+        { title: { enabled: false }, allowDecimals: false, max: patients_max_value, tickAmount: 5 },
       ]
 
       f.legend(enabled: false)
@@ -251,7 +271,7 @@ class DashboardController < ApplicationController
         f.series(name: "Total Cases", data: data)
 
         f.yAxis [
-          { title: { enabled: false }, allowDecimals: false, max: max_value, tickAmount: tick_amount },
+          { title: { enabled: false }, allowDecimals: false, max: zip_data_max_value, tickAmount: zip_data_tick_amount },
         ]
 
         f.legend(enabled: false)
