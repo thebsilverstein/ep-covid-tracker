@@ -57,22 +57,13 @@
 
 <div class="container my-5">
   <div class="row">
-    <div class="col">
+    <div class="col-lg-6">
       <h2>New Cases by Day</h2>
       <%= high_chart("new_cases_by_day", @new_cases_by_day) %>
     </div>
-  </div>
-</div>
-
-<div class="container my-5">
-  <div class="row">
-    <div class="col-lg-6 mb-5 mb-lg-0">
-      <h3>Total Deaths by Day</h3>
-      <%= high_chart("total_deaths_by_day", @total_deaths_by_day) %>
-    </div>
     <div class="col-lg-6">
-      <h3>Total Cases & Deaths by Age Range</h3>
-      <%= high_chart("total_cases_by_age_range", @total_cases_by_age_range) %>
+      <h2>New Recoveries by Day</h2>
+      <%= high_chart("new_recoveries_by_day", @new_recoveries_by_day) %>
     </div>
   </div>
 </div>
@@ -88,6 +79,19 @@
       <%= high_chart("patients_in_icu", @patients_in_icu) %>
     </div>
     <hr>
+  </div>
+</div>
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-6 mb-5 mb-lg-0">
+      <h3>Total Deaths by Day</h3>
+      <%= high_chart("total_deaths_by_day", @total_deaths_by_day) %>
+    </div>
+    <div class="col-lg-6">
+      <h3>Total Cases & Deaths by Age Range</h3>
+      <%= high_chart("total_cases_by_age_range", @total_cases_by_age_range) %>
+    </div>
   </div>
 </div>
 

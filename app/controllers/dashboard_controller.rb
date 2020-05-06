@@ -163,26 +163,42 @@ class DashboardController < ApplicationController
     ##### New Cases by Day
     
     new_cases_by_day_data = []
-    new_recoveries_by_day_data = []
 
     for i in (1..total_cases_by_day_data.size - 1)
       new_cases_by_day_data += [total_cases_by_day_data[i] - total_cases_by_day_data[i - 1]]
     end
 
-    for i in (1..total_recoveries_by_day_data.size - 1)
-      new_recoveries_by_day_data += [total_recoveries_by_day_data[i] - total_recoveries_by_day_data[i - 1]]
-    end
 
     @new_cases_by_day = LazyHighCharts::HighChart.new('graph') do |f|
       f.xAxis(title: { enabled: false }, categories: total_cases_by_day_categories.drop(1))
       f.series(name: "New Cases", data: new_cases_by_day_data)
-      # f.series(name: "New Recoveries", data: new_recoveries_by_day_data)
 
       f.yAxis [
         { title: { enabled: false }, allowDecimals: false, max: new_cases_by_day_max },
       ]
 
       f.colors(["#fed907", "#26dc4e"])
+      f.legend(enabled: false)
+      f.chart({defaultSeriesType: "column"})
+    end
+
+    ##### New Recoveries by Day
+    
+    new_recoveries_by_day_data = []
+
+    for i in (1..total_recoveries_by_day_data.size - 1)
+      new_recoveries_by_day_data += [total_recoveries_by_day_data[i] - total_recoveries_by_day_data[i - 1]]
+    end
+
+    @new_recoveries_by_day = LazyHighCharts::HighChart.new('graph') do |f|
+      f.xAxis(title: { enabled: false }, categories: total_cases_by_day_categories.drop(1))
+      f.series(name: "New Recoveries", data: new_recoveries_by_day_data)
+
+      f.yAxis [
+        { title: { enabled: false }, allowDecimals: false, max: new_cases_by_day_max },
+      ]
+
+      f.colors(["#26dc4e"])
       f.legend(enabled: false)
       f.chart({defaultSeriesType: "column"})
     end
