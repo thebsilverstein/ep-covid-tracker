@@ -147,6 +147,7 @@ class DashboardController < ApplicationController
       f.chart(style: { fontFamily: '\'Inter\', sans-serif'})
       f.lang(thousandsSep: ",")
       f.colors(["#fed907", "#f70000", "#8085e9", "#f15c80", "#e4d354"])
+      f.plotOptions( line: { marker: false } )
     end
 
     ##### Total Cases and Recoveries by Day
@@ -163,6 +164,7 @@ class DashboardController < ApplicationController
       f.colors(["#fed907", "#26dc4e"])
       # f.legend(enabled: false)
       f.chart({defaultSeriesType: "area"})
+      f.plotOptions( area: { marker: false } )
     end
 
     ##### New Cases by Day
