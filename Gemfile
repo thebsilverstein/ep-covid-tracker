@@ -58,3 +58,4 @@ gem 'jquery-rails'
 gem 'lazy_high_charts'
 gem 'jquery-datatables'
 gem 'moving_average'
+gem 'facets', require: false

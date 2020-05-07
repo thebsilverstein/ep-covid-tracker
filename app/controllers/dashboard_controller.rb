@@ -1,3 +1,5 @@
+require 'facets/array/pad'
+
 class DashboardController < ApplicationController
   def index
 
@@ -9,7 +11,7 @@ class DashboardController < ApplicationController
     total_cases_by_day_tick_amount = 13
     new_cases_by_day_max = 80
 
-    total_recoveries_by_day_data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 9, 9, 10, 10, 16, 18, 18, 20, 29, 33, 33, 35, 41, 44, 48, 62, 63, 64, 67, 70, 80, 100, 121, 122, 184, 185, 265, 295, 334, 397, 419, 455, 474, 486, 514, 559]
+    total_recoveries_by_day_data = [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 5, 9, 9, 10, 10, 16, 18, 18, 20, 29, 33, 33, 35, 41, 44, 48, 62, 63, 64, 67, 70, 80, 100, 121, 122, 184, 185, 265, 295, 334, 397, 419, 455, 474, 486, 514, 559]
 
     total_deaths_by_day_data = [1, 2, 2, 2, 2, 4, 6, 7, 7, 8, 8, 9, 9, 10, 10, 10, 12, 12, 12, 14, 18, 21, 22, 22, 22, 22, 22, 23]
     total_deaths_by_day_max = 30
@@ -174,20 +176,20 @@ class DashboardController < ApplicationController
     new_cases_by_day_average_data = []
 
     for i in (6..new_cases_by_day_data.size - 1)
-      new_cases_by_day_average_data += [new_cases_by_day_data.sma(i,7)]
+      new_cases_by_day_average_data += [new_cases_by_day_data.sma(i,7).round(1)]
     end
 
     @new_cases_by_day = LazyHighCharts::HighChart.new('graph') do |f|
       f.xAxis(title: { enabled: false }, categories: total_cases_by_day_categories.drop(1))
       f.series(name: "New Cases", data: new_cases_by_day_data)
-      # f.series(name: "7-Day Moving Average", data: new_cases_by_day_average_data, type: "line")
+      f.series(name: "7-Day Moving Average", data: new_cases_by_day_average_data.pad!((new_cases_by_day_average_data.size + 6) * -1,nil), type: "line")
 
       f.yAxis [
         { title: { enabled: false }, allowDecimals: false, max: new_cases_by_day_max },
       ]
 
-      f.colors(["#fed907", "#26dc4e"])
-      f.legend(enabled: false)
+      f.colors(["#fed907", "#aaaaaa"])
+      # f.legend(enabled: false)
       f.chart({defaultSeriesType: "column"})
     end
 
@@ -196,19 +198,28 @@ class DashboardController < ApplicationController
     new_recoveries_by_day_data = []
 
     for i in (1..total_recoveries_by_day_data.size - 1)
-      new_recoveries_by_day_data += [total_recoveries_by_day_data[i] - total_recoveries_by_day_data[i - 1]]
+      if !total_recoveries_by_day_data[i].nil? && !total_recoveries_by_day_data[i - 1].nil?
+        new_recoveries_by_day_data += [total_recoveries_by_day_data[i] - total_recoveries_by_day_data[i - 1]]
+      end
+    end
+
+    new_recoveries_by_day_average_data = []
+
+    for i in (6..new_recoveries_by_day_data.size - 1)
+      new_recoveries_by_day_average_data += [new_recoveries_by_day_data.sma(i,7).round(1)]
     end
 
     @new_recoveries_by_day = LazyHighCharts::HighChart.new('graph') do |f|
-      f.xAxis(title: { enabled: false }, categories: total_cases_by_day_categories.drop(1))
+      f.xAxis(title: { enabled: false }, categories: total_cases_by_day_categories.last(new_recoveries_by_day_data.size))
       f.series(name: "New Recoveries", data: new_recoveries_by_day_data)
+      f.series(name: "7-Day Moving Average", data: new_recoveries_by_day_average_data.pad!((new_recoveries_by_day_average_data.size + 6) * -1,nil), type: "line")
 
       f.yAxis [
         { title: { enabled: false }, allowDecimals: false, max: new_cases_by_day_max },
       ]
 
-      f.colors(["#26dc4e"])
-      f.legend(enabled: false)
+      f.colors(["#26dc4e", "#aaaaaa"])
+      # f.legend(enabled: false)
       f.chart({defaultSeriesType: "column"})
     end
 
@@ -224,7 +235,7 @@ class DashboardController < ApplicationController
 
       f.colors(["#f70000"])
       f.legend(enabled: false)
-      f.chart({defaultSeriesType: "column", height: 300})
+      f.chart({defaultSeriesType: "column", height: 350})
     end
 
     ##### Total Cases by Age Range
@@ -239,7 +250,7 @@ class DashboardController < ApplicationController
       ]
 
       f.legend(enabled: false)
-      f.chart({defaultSeriesType: "bar", height: 300})
+      f.chart({defaultSeriesType: "bar", height: 350})
     end
 
     ##### Total Cases by Gender
@@ -252,35 +263,51 @@ class DashboardController < ApplicationController
       #   { title: { enabled: false }, allowDecimals: false },
       # ]
       f.colors(["#999999", "#666666"])
-      f.chart({defaultSeriesType: "pie", height: 300})
+      f.chart({defaultSeriesType: "pie", height: 350})
     end
 
     ##### Patients in Hospital
+
+    patients_hospitalized_average_data = []
+
+    for i in (6..patients_hospitalized_data.size - 1)
+      patients_hospitalized_average_data += [patients_hospitalized_data.sma(i,7).round(1)]
+    end
     
     @patients_hospitalized = LazyHighCharts::HighChart.new('graph') do |f|
       f.xAxis(title: { enabled: false }, categories: patients_hospitalized_categories)
       f.series(name: "Patients", data: patients_hospitalized_data)
+      f.series(name: "7-Day Moving Average", data: patients_hospitalized_average_data.pad!((patients_hospitalized_average_data.size + 6) * -1,nil), type: "line")
 
       f.yAxis [
         { title: { enabled: false }, allowDecimals: false, max: patients_max_value, tickAmount: 5 },
       ]
 
-      f.legend(enabled: false)
-      f.chart({defaultSeriesType: "column", height: 300})
+      f.colors(["#fed907", "#aaaaaa"])
+      # f.legend(enabled: false)
+      f.chart({defaultSeriesType: "column", height: 350})
     end
 
     ##### Patients in ICU
     
+    patients_in_icu_average_data = []
+
+    for i in (6..patients_in_icu_data.size - 1)
+      patients_in_icu_average_data += [patients_in_icu_data.sma(i,7).round(1)]
+    end
+
     @patients_in_icu = LazyHighCharts::HighChart.new('graph') do |f|
       f.xAxis(title: { enabled: false }, categories: patients_in_icu_categories)
       f.series(name: "Patients", data: patients_in_icu_data)
+      f.series(name: "7-Day Moving Average", data: patients_in_icu_average_data.pad!((patients_in_icu_average_data.size + 6) * -1,nil), type: "line")
 
       f.yAxis [
         { title: { enabled: false }, allowDecimals: false, max: patients_max_value, tickAmount: 5 },
       ]
 
-      f.legend(enabled: false)
-      f.chart({defaultSeriesType: "column", height: 300})
+      f.colors(["#fed907", "#aaaaaa"])
+      # f.legend(enabled: false)
+      f.chart({defaultSeriesType: "column", height: 350})
     end
 
     ##### Total Cases by Zip Code
