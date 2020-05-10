@@ -3,35 +3,35 @@ require 'facets/array/pad'
 class DashboardController < ApplicationController
   def index
 
-    @last_updated_on = Time.zone.parse("2020-05-08 7:26:00 PM")
+    @last_updated_on = Time.zone.parse("2020-05-09 7:28:00 PM")
 
-    total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5", "5/6", "5/7", "5/8"]
+    total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5", "5/6", "5/7", "5/8", "5/9"]
     
-    total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68, 78, 96, 106, 115, 125, 153, 192, 225, 252, 269, 292, 300, 346, 393, 451, 482, 505, 531, 540, 587, 645, 674, 706, 780, 802, 829, 857, 887, 924, 961, 986, 998, 1029, 1080, 1119, 1190, 1276]
-    total_cases_by_day_max = 1300
-    total_cases_by_day_tick_amount = 14
+    total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68, 78, 96, 106, 115, 125, 153, 192, 225, 252, 269, 292, 300, 346, 393, 451, 482, 505, 531, 540, 587, 645, 674, 706, 780, 802, 829, 857, 887, 924, 961, 986, 998, 1029, 1080, 1119, 1190, 1276, 1322]
+    total_cases_by_day_max = 1400
+    total_cases_by_day_tick_amount = 15
     new_cases_by_day_max = 90
 
-    total_recoveries_by_day_data = [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 5, 9, 9, 10, 10, 16, 18, 18, 20, 29, 33, 33, 35, 41, 44, 48, 62, 63, 64, 67, 70, 80, 100, 121, 122, 184, 185, 265, 295, 334, 397, 419, 455, 474, 486, 514, 559, 619, 643]
+    total_recoveries_by_day_data = [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 5, 9, 9, 10, 10, 16, 18, 18, 20, 29, 33, 33, 35, 41, 44, 48, 62, 63, 64, 67, 70, 80, 100, 121, 122, 184, 185, 265, 295, 334, 397, 419, 455, 474, 486, 514, 559, 619, 643, 672]
 
-    total_deaths_by_day_categories = ["4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5", "5/6", "5/7", "5/8"]
-    total_deaths_by_day_data = [1, 2, 2, 2, 2, 4, 6, 7, 7, 8, 8, 9, 9, 10, 10, 10, 12, 12, 12, 14, 18, 21, 22, 22, 22, 22, 22, 23, 30, 32]
+    total_deaths_by_day_categories = ["4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5", "5/6", "5/7", "5/8", "5/9"]
+    total_deaths_by_day_data = [1, 2, 2, 2, 2, 4, 6, 7, 7, 8, 8, 9, 9, 10, 10, 10, 12, 12, 12, 14, 18, 21, 22, 22, 22, 22, 22, 23, 30, 32, 32]
     total_deaths_by_day_max = 40
     
-    patients_hospitalized_categories = ["4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5", "5/6", "5/7", "5/8"]
-    patients_in_icu_categories = ["4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5", "5/6", "5/7", "5/8"]
-    patients_hospitalized_data = [19, 26, 27, 27, 27, 40, 48, 52, 48, 57, 58, 61, 65, 48, 38, 25, 29, 38, 37, 35, 33, 38, 36, 38, 35, 35, 52, 53, 58, 61, 59, 65, 71, 68, 62, 83]
-    patients_in_icu_data = [8, 8, 10, 10, 10, 12, 19, 21, 22, 23, 23, 26, 27, 10, 11, 10, 8, 13, 13, 18, 21, 26, 16, 18, 19, 19, 27, 31, 30, 39, 21, 38, 40, 39, 40, 47]
+    patients_hospitalized_categories = ["4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5", "5/6", "5/7", "5/8", "5/9"]
+    patients_in_icu_categories = ["4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5", "5/6", "5/7", "5/8", "5/9"]
+    patients_hospitalized_data = [19, 26, 27, 27, 27, 40, 48, 52, 48, 57, 58, 61, 65, 48, 38, 25, 29, 38, 37, 35, 33, 38, 36, 38, 35, 35, 52, 53, 58, 61, 59, 65, 71, 68, 62, 83, 82]
+    patients_in_icu_data = [8, 8, 10, 10, 10, 12, 19, 21, 22, 23, 23, 26, 27, 10, 11, 10, 8, 13, 13, 18, 21, 26, 16, 18, 19, 19, 27, 31, 30, 39, 21, 38, 40, 39, 40, 47, 40]
     patients_max_value = 90
 
     total_cases_by_age_range_categories = ["12 & Under", "Teens", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"]
-    total_cases_by_age_range_data = [60, 52, 248, 237, 193, 213, 152, 76, 28, 17]
-    total_cases_by_age_range_max = 250
+    total_cases_by_age_range_data = [62, 54, 257, 243, 203, 220, 159, 78, 29, 17]
+    total_cases_by_age_range_max = 300
 
     total_deaths_by_age_range_data = [0, 0, 0, 0, 1, 4, 9, 9, 7, 2]
 
-    total_cases_by_gender_male = 612
-    total_cases_by_gender_female = 664
+    total_cases_by_gender_male = 632
+    total_cases_by_gender_female = 690
 
     zip_data_categories_1 = ["3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5", "5/6", "5/7", "5/8"]
 
@@ -92,7 +92,8 @@ class DashboardController < ApplicationController
 
     zip_data_tick_amount = 9
 
-    @links = [ ["City of El Paso Facebook - May 8, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/city-reports-two-additional-deaths-another-spike-in-positive-cases/3005807076125382/"],
+    @links = [ ["City of El Paso Facebook - May 9, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/city-urges-residents-to-celebrate-mothers-day-virtually/3008140949225328/"],
+               ["City of El Paso Facebook - May 8, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/city-reports-two-additional-deaths-another-spike-in-positive-cases/3005807076125382/"],
                ["City of El Paso Facebook - May 7, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/city-council-to-amend-local-directive-reports-seven-deaths/3003177806388309/"],
                ["City of El Paso Facebook - May 6, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/city-reports-one-covid-19-death-urges-residents-to-protect-vulnerable-population/3001071953265561/"],
                ["City of El Paso Facebook - May 5, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/case-numbers-continue-increasing-residents-urged-to-wear-face-coverings/2998656446840445/"],
