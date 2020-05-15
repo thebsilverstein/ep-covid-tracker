@@ -11,6 +11,7 @@ class DashboardController < ApplicationController
     total_cases_by_day_max = 1700
     total_cases_by_day_tick_amount = 8
     new_cases_by_day_max = 160
+    new_cases_by_day_tick_amount = 9
 
     total_recoveries_by_day_data = [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 5, 9, 9, 10, 10, 16, 18, 18, 20, 29, 33, 33, 35, 41, 44, 48, 62, 63, 64, 67, 70, 80, 100, 121, 122, 184, 185, 265, 295, 334, 397, 419, 455, 474, 486, 514, 559, 619, 643, 672, 685, 685, 719, 751, 793]
 
@@ -196,7 +197,7 @@ class DashboardController < ApplicationController
       f.series(name: "7-Day Average", data: new_cases_by_day_average_data.pad!((new_cases_by_day_average_data.size + 6) * -1,nil), type: "line")
 
       f.yAxis [
-        { title: { enabled: false }, allowDecimals: false, max: new_cases_by_day_max },
+        { title: { enabled: false }, allowDecimals: false, max: new_cases_by_day_max, tickAmount: new_cases_by_day_tick_amount },
       ]
 
       f.colors(["#fed907", "#aaaaaa"])
@@ -226,7 +227,7 @@ class DashboardController < ApplicationController
       f.series(name: "7-Day Average", data: new_recoveries_by_day_average_data.pad!((new_recoveries_by_day_average_data.size + 6) * -1,nil), type: "line")
 
       f.yAxis [
-        { title: { enabled: false }, allowDecimals: false, max: new_cases_by_day_max },
+        { title: { enabled: false }, allowDecimals: false, max: new_cases_by_day_max, tickAmount: new_cases_by_day_tick_amount },
       ]
 
       f.colors(["#26dc4e", "#aaaaaa"])
