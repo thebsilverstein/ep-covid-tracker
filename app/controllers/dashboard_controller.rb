@@ -180,7 +180,7 @@ class DashboardController < ApplicationController
 
       f.colors(["#fed907", "#26dc4e"])
       # f.legend(enabled: false)
-      f.chart({defaultSeriesType: "area"})
+      f.chart({defaultSeriesType: "line"})
       f.plotOptions( area: { marker: false } )
     end
 
@@ -195,7 +195,7 @@ class DashboardController < ApplicationController
 
       f.colors(["#fed907", "#26dc4e"])
       # f.legend(enabled: false)
-      f.chart({defaultSeriesType: "area"})
+      f.chart({defaultSeriesType: "line"})
       f.plotOptions( area: { marker: false } )
     end
 
@@ -269,7 +269,7 @@ class DashboardController < ApplicationController
 
       f.colors(["#f70000"])
       f.legend(enabled: false)
-      f.chart({defaultSeriesType: "area", height: 350})
+      f.chart({defaultSeriesType: "line", height: 350})
     end
 
     @total_deaths_by_day_logarithmic = LazyHighCharts::HighChart.new('graph') do |f|
@@ -282,7 +282,7 @@ class DashboardController < ApplicationController
 
       f.colors(["#f70000"])
       f.legend(enabled: false)
-      f.chart({defaultSeriesType: "area", height: 350})
+      f.chart({defaultSeriesType: "line", height: 350})
     end
 
     ##### Total Cases by Age Range
