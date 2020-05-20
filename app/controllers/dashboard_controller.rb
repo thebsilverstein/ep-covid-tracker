@@ -184,6 +184,21 @@ class DashboardController < ApplicationController
       f.plotOptions( area: { marker: false } )
     end
 
+    @total_cases_by_day_logarithmic = LazyHighCharts::HighChart.new('graph') do |f|
+      f.xAxis(title: { enabled: false }, categories: total_cases_by_day_categories)
+      f.series(name: "Total Cases", data: total_cases_by_day_data)
+      f.series(name: "Total Recoveries", data: total_recoveries_by_day_data)
+
+      f.yAxis [
+        { type: 'logarithmic', title: { enabled: false }, allowDecimals: false, tickPositions: [1, 10, 100, 1000, 10000].map { |v| Math.log10(v) } },
+      ]
+
+      f.colors(["#fed907", "#26dc4e"])
+      # f.legend(enabled: false)
+      f.chart({defaultSeriesType: "area"})
+      f.plotOptions( area: { marker: false } )
+    end
+
     ##### New Cases by Day
     
     new_cases_by_day_data = []

@@ -17,4 +17,17 @@ $( document ).ready(function() {
     "info":     false,
     "searching":   false,
   });
+
+  $('#total_cases_by_day_logarithmic').hide();
+
+  $('input[type=radio]').click(function() {
+    $('#total_cases_by_day').hide();
+    $('#total_cases_by_day_logarithmic').hide();
+    if ($(this).val() == "total_cases_by_day") {
+      $('#total_cases_by_day').show();
+    }
+    if ($(this).val() == "total_cases_by_day_logarithmic") {
+      $('#total_cases_by_day_logarithmic').show();
+    }
+  });
 });
