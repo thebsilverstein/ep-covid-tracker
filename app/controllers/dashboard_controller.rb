@@ -285,6 +285,34 @@ class DashboardController < ApplicationController
       f.chart({defaultSeriesType: "line", height: 350})
     end
 
+    ##### New Deaths by Day
+    
+    new_deaths_by_day_data = []
+
+    for i in (1..total_deaths_by_day_data.size - 1)
+      new_deaths_by_day_data += [total_deaths_by_day_data[i] - total_deaths_by_day_data[i - 1]]
+    end
+
+    new_deaths_by_day_average_data = []
+
+    for i in (6..new_deaths_by_day_data.size - 1)
+      new_deaths_by_day_average_data += [new_deaths_by_day_data.sma(i,7).round(1)]
+    end
+
+    @new_deaths_by_day = LazyHighCharts::HighChart.new('graph') do |f|
+      f.xAxis(title: { enabled: false }, categories: total_deaths_by_day_categories.drop(1))
+      f.series(name: "New Deaths", data: new_deaths_by_day_data)
+      f.series(name: "7-Day Average", data: new_deaths_by_day_average_data.pad!((new_deaths_by_day_average_data.size + 6) * -1,nil), type: "line")
+
+      f.yAxis [
+        { title: { enabled: false }, allowDecimals: false },
+      ]
+
+      f.colors(["#f70000", "#aaaaaa"])
+      # f.legend(enabled: false)
+      f.chart({defaultSeriesType: "column"})
+    end
+
     ##### Total Cases by Age Range
 
     @total_cases_by_age_range = LazyHighCharts::HighChart.new('graph') do |f|
