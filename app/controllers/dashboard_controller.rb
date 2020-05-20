@@ -3,7 +3,7 @@ require 'facets/array/pad'
 class DashboardController < ApplicationController
   def index
 
-    @last_updated_on = Time.zone.parse("2020-05-20 4:34:00 PM")
+    @last_updated_on = Time.zone.parse("2020-05-20 5:14:00 PM")
 
     total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5", "5/6", "5/7", "5/8", "5/9", "5/10", "5/11", "5/12", "5/13", "5/14", "5/15", "5/16", "5/17", "5/18", "5/19", "5/20"]
     
@@ -164,7 +164,7 @@ class DashboardController < ApplicationController
       f.chart(style: { fontFamily: '\'Inter\', sans-serif'})
       f.lang(thousandsSep: ",")
       f.colors(["#fed907", "#f70000", "#8085e9", "#f15c80", "#e4d354"])
-      f.plotOptions( line: { marker: false } )
+      f.plotOptions( line: { marker: false }, area: { marker: false } )
     end
 
     ##### Total Cases and Recoveries by Day
@@ -269,7 +269,20 @@ class DashboardController < ApplicationController
 
       f.colors(["#f70000"])
       f.legend(enabled: false)
-      f.chart({defaultSeriesType: "column", height: 350})
+      f.chart({defaultSeriesType: "area", height: 350})
+    end
+
+    @total_deaths_by_day_logarithmic = LazyHighCharts::HighChart.new('graph') do |f|
+      f.xAxis(title: { enabled: false }, categories: total_deaths_by_day_categories)
+      f.series(name: "Total Deaths", data: total_deaths_by_day_data)
+
+      f.yAxis [
+        { type: 'logarithmic', title: { enabled: false }, allowDecimals: false, tickPositions: [1, 10, 100].map { |v| Math.log10(v) } },
+      ]
+
+      f.colors(["#f70000"])
+      f.legend(enabled: false)
+      f.chart({defaultSeriesType: "area", height: 350})
     end
 
     ##### Total Cases by Age Range

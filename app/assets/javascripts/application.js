@@ -20,7 +20,7 @@ $( document ).ready(function() {
 
   $('#total_cases_by_day_logarithmic').hide();
 
-  $('input[type=radio]').click(function() {
+  $('input[name=total_cases_by_day_options]').click(function() {
     $('#total_cases_by_day').hide();
     $('#total_cases_by_day_logarithmic').hide();
     if ($(this).val() == "total_cases_by_day") {
@@ -28,6 +28,19 @@ $( document ).ready(function() {
     }
     if ($(this).val() == "total_cases_by_day_logarithmic") {
       $('#total_cases_by_day_logarithmic').show();
+    }
+  });
+
+  $('#total_deaths_by_day_logarithmic').hide();
+
+  $('input[name=total_deaths_by_day_options]').click(function() {
+    $('#total_deaths_by_day').hide();
+    $('#total_deaths_by_day_logarithmic').hide();
+    if ($(this).val() == "total_deaths_by_day") {
+      $('#total_deaths_by_day').show();
+    }
+    if ($(this).val() == "total_deaths_by_day_logarithmic") {
+      $('#total_deaths_by_day_logarithmic').show();
     }
   });
 });

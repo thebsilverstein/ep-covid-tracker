@@ -48,20 +48,18 @@
 
 <div class="container mb-5">
   <div class="row">
-    <div class="col-12 mb-2">
+    <div class="col-12 text-center">
       <h2>Total Cases and Recoveries by Day</h2>
-    </div>
-    <div class="col-12 mb-3 text-center">
-      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+      <div class="btn-group btn-group-toggle mb-2" data-toggle="buttons">
         <label class="btn btn-outline-secondary btn-sm active">
-          <input type="radio" name="options" id="option1" value="total_cases_by_day" checked> Linear
+          <input type="radio" name="total_cases_by_day_options" id="option1" value="total_cases_by_day" checked> Linear
         </label>
         <label class="btn btn-outline-secondary btn-sm">
-          <input type="radio" name="options" id="option2" value="total_cases_by_day_logarithmic"> Logarithmic
+          <input type="radio" name="total_cases_by_day_options" id="option2" value="total_cases_by_day_logarithmic"> Logarithmic
         </label>
       </div>
-    </div>
-    <div class="col-12">
+
       <%= high_chart("total_cases_by_day", @total_cases_by_day) %>
       <%= high_chart("total_cases_by_day_logarithmic", @total_cases_by_day_logarithmic) %>
     </div>
@@ -99,7 +97,18 @@
   <div class="row">
     <div class="col-lg-6 mb-5 mb-lg-0">
       <h3>Total Deaths by Day</h3>
+      <div class="col-12 mb-3 text-center">
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-outline-secondary btn-sm active">
+          <input type="radio" name="total_deaths_by_day_options" id="option1" value="total_deaths_by_day" checked> Linear
+        </label>
+        <label class="btn btn-outline-secondary btn-sm">
+          <input type="radio" name="total_deaths_by_day_options" id="option2" value="total_deaths_by_day_logarithmic"> Logarithmic
+        </label>
+      </div>
+    </div>
       <%= high_chart("total_deaths_by_day", @total_deaths_by_day) %>
+      <%= high_chart("total_deaths_by_day_logarithmic", @total_deaths_by_day_logarithmic) %>
     </div>
     <div class="col-lg-6">
       <h3>Total Cases & Deaths by Age Range</h3>
