@@ -18,29 +18,29 @@ $( document ).ready(function() {
     "searching":   false,
   });
 
-  $('#total_cases_by_day_logarithmic').hide();
+  $('#chart_total_cases_by_day_logarithmic').hide();
 
   $('input[name=total_cases_by_day_options]').click(function() {
-    $('#total_cases_by_day').hide();
-    $('#total_cases_by_day_logarithmic').hide();
+    $('#chart_total_cases_by_day').hide();
+    $('#chart_total_cases_by_day_logarithmic').hide();
     if ($(this).val() == "total_cases_by_day") {
-      $('#total_cases_by_day').show();
+      $('#chart_total_cases_by_day').show();
     }
     if ($(this).val() == "total_cases_by_day_logarithmic") {
-      $('#total_cases_by_day_logarithmic').show();
+      $('#chart_total_cases_by_day_logarithmic').show();
     }
   });
 
-  $('#total_deaths_by_day_logarithmic').hide();
+  $('#chart_total_deaths_by_day_logarithmic').hide();
 
   $('input[name=total_deaths_by_day_options]').click(function() {
-    $('#total_deaths_by_day').hide();
-    $('#total_deaths_by_day_logarithmic').hide();
+    $('#chart_total_deaths_by_day').hide();
+    $('#chart_total_deaths_by_day_logarithmic').hide();
     if ($(this).val() == "total_deaths_by_day") {
-      $('#total_deaths_by_day').show();
+      $('#chart_total_deaths_by_day').show();
     }
     if ($(this).val() == "total_deaths_by_day_logarithmic") {
-      $('#total_deaths_by_day_logarithmic').show();
+      $('#chart_total_deaths_by_day_logarithmic').show();
     }
   });
 });
