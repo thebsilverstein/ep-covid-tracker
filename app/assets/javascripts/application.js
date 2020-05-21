@@ -25,9 +25,11 @@ $( document ).ready(function() {
     $('#chart_total_cases_by_day_logarithmic').hide();
     if ($(this).val() == "total_cases_by_day") {
       $('#chart_total_cases_by_day').show();
+      $("#total_cases_by_day").highcharts().reflow();
     }
     if ($(this).val() == "total_cases_by_day_logarithmic") {
       $('#chart_total_cases_by_day_logarithmic').show();
+      $("#total_cases_by_day_logarithmic").highcharts().reflow();
     }
   });
 
@@ -38,9 +40,11 @@ $( document ).ready(function() {
     $('#chart_total_deaths_by_day_logarithmic').hide();
     if ($(this).val() == "total_deaths_by_day") {
       $('#chart_total_deaths_by_day').show();
+      $("#total_deaths_by_day").highcharts().reflow();
     }
     if ($(this).val() == "total_deaths_by_day_logarithmic") {
       $('#chart_total_deaths_by_day_logarithmic').show();
+      $("#total_deaths_by_day_logarithmic").highcharts().reflow();
     }
   });
 });
