@@ -140,6 +140,14 @@ p {
   }
 }
 
+.alert-notice {
+  background: #ccc;
+  p {
+    color: #333;
+    font-size: 14px;
+  }
+}
+
 .table .thead-dark th {
   background: #666;
 }
