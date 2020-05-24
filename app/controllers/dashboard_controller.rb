@@ -3,7 +3,7 @@ require 'facets/array/pad'
 class DashboardController < ApplicationController
   def index
 
-    @last_updated_on = Time.zone.parse("2020-05-24 7:23:00 AM")
+    @last_updated_on = Time.zone.parse("2020-05-24 7:27:00 AM")
 
     total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5", "5/6", "5/7", "5/8", "5/9", "5/10", "5/11", "5/12", "5/13", "5/14", "5/15", "5/16", "5/17", "5/18", "5/19", "5/20", "5/21", "5/22", "5/23", "5/24"]
     
@@ -26,11 +26,11 @@ class DashboardController < ApplicationController
     patients_max_value = 120
     patients_tick_amount = 6
 
-    total_cases_by_age_range_categories = ["12 & Under", "Teens", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"]
-    total_cases_by_age_range_data = [106, 100, 391, 377, 368, 375, 289, 145, 81, 33]
-    total_cases_by_age_range_max = 400
+    total_cases_by_age_range_categories = ["12 & Under", "Teens", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99", "100-109"]
+    total_cases_by_age_range_data = [112, 109, 402, 386, 380, 387, 295, 152, 82, 34, 1]
+    total_cases_by_age_range_max = 450
 
-    total_deaths_by_age_range_data = [0, 0, 0, 0, 4, 7, 17, 18, 8, 4]
+    total_deaths_by_age_range_data = [0, 0, 0, 0, 4, 7, 17, 18, 8, 4, 0]
 
     total_cases_by_gender_male = 1120
     total_cases_by_gender_female = 1220
@@ -94,7 +94,7 @@ class DashboardController < ApplicationController
 
     zip_data_tick_amount = 7
 
-    @links = [ ["epstrong.org - May 21–23, 2020", "http://epstrong.org/results.php"],
+    @links = [ ["epstrong.org - May 21–24, 2020", "http://epstrong.org/results.php"],
                ["City of El Paso Facebook - May 20, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/city-reports-two-additional-deaths/3037450162961073/"],
                ["City of El Paso Facebook - May 19, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/city-reports-five-additional-deaths/3034810143225075/"],
                ["City of El Paso Facebook - May 18, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/city-reports-additional-cases-open-texas-efforts-delayed-one-week/3032758493430240/"],
