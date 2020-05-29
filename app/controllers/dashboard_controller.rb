@@ -94,7 +94,7 @@ class DashboardController < ApplicationController
 
     zip_data_tick_amount = 5
 
-    @links = [ ["epstrong.org - May 21–28, 2020", "http://epstrong.org/results.php"],
+    @links = [ ["epstrong.org - May 21–29, 2020", "http://epstrong.org/results.php"],
                ["City of El Paso Facebook - May 20, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/city-reports-two-additional-deaths/3037450162961073/"],
                ["City of El Paso Facebook - May 19, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/city-reports-five-additional-deaths/3034810143225075/"],
                ["City of El Paso Facebook - May 18, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/city-reports-additional-cases-open-texas-efforts-delayed-one-week/3032758493430240/"],
