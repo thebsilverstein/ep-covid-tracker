@@ -31,6 +31,7 @@ class DashboardController < ApplicationController
     total_cases_by_age_range_max = 700
 
     total_deaths_by_age_range_data = [0, 0, 1, 0, 6, 15, 21, 23, 16, 8, 0]
+    total_deaths_by_age_range_max = 50
 
     total_cases_by_gender_male = 1633
     total_cases_by_gender_female = 1480
@@ -319,12 +320,26 @@ class DashboardController < ApplicationController
     @total_cases_by_age_range = LazyHighCharts::HighChart.new('graph') do |f|
       f.xAxis(title: { enabled: false }, categories: total_cases_by_age_range_categories)
       f.series(name: "Total Cases", data: total_cases_by_age_range_data)
-      f.series(name: "Total Deaths", data: total_deaths_by_age_range_data)
 
       f.yAxis [
         { title: { enabled: false }, allowDecimals: false, max: total_cases_by_age_range_max },
       ]
 
+      f.legend(enabled: false)
+      f.chart({defaultSeriesType: "bar", height: 350})
+    end
+
+    ##### Total Deaths by Age Range
+
+    @total_deaths_by_age_range = LazyHighCharts::HighChart.new('graph') do |f|
+      f.xAxis(title: { enabled: false }, categories: total_cases_by_age_range_categories)
+      f.series(name: "Total Deaths", data: total_deaths_by_age_range_data)
+
+      f.yAxis [
+        { title: { enabled: false }, allowDecimals: false, max: total_deaths_by_age_range_max },
+      ]
+
+      f.colors(["#f70000"])
       f.legend(enabled: false)
       f.chart({defaultSeriesType: "bar", height: 350})
     end

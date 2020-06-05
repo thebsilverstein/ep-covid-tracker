@@ -150,10 +150,19 @@
 <div class="container mb-5">
   <div class="row justify-content-center">
     <div class="col-lg-6 mb-5 mb-lg-0">
-      <h3>Total Cases & Deaths by Age Range</h3>
+      <h3>Total Cases by Age Range</h3>
       <%= high_chart("total_cases_by_age_range", @total_cases_by_age_range) %>
     </div>
     <div class="col-lg-6">
+      <h3>Total Deaths by Age Range</h3>
+      <%= high_chart("total_deaths_by_age_range", @total_deaths_by_age_range) %>
+    </div>
+  </div>
+</div>
+
+<div class="container mb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 mb-5 mb-lg-0">
       <h3>Total Cases by Gender</h3>
       <%= high_chart("total_cases_by_gender", @total_cases_by_gender) %>
     </div>
