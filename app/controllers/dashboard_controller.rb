@@ -279,7 +279,7 @@ class DashboardController < ApplicationController
       f.series(name: "Total Deaths", data: total_deaths_by_day_data)
 
       f.yAxis [
-        { type: 'logarithmic', title: { enabled: false }, allowDecimals: false, tickPositions: [1, 10, 100].map { |v| Math.log10(v) } },
+        { type: 'logarithmic', title: { enabled: false }, allowDecimals: false, tickPositions: [1, 10, 100, 1000].map { |v| Math.log10(v) } },
       ]
 
       f.colors(["#f70000"])
