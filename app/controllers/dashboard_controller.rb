@@ -36,6 +36,9 @@ class DashboardController < ApplicationController
     total_cases_by_gender_male = 2141
     total_cases_by_gender_female = 2037
 
+    active_cases_max = 1200
+    active_cases_by_day_tick_amount = 7
+
     zip_data_categories_1 = ["3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5", "5/6", "5/7", "5/8", "5/9", "5/10", "5/11", "5/12", "5/13", "5/14", "5/15", "5/16", "5/17", "5/18", "5/19", "5/20", "5/21", "5/22", "5/23", "5/24", "5/25", "5/26", "5/27", "5/28", "5/29", "5/30", "5/31", "6/1", "6/2", "6/3", "6/4", "6/5", "6/6", "6/7", "6/8", "6/9", "6/10", "6/11", "6/12", "6/13", "6/14", "6/15", "6/16", "6/17", "6/18", "6/19"]
 
     @total_cases_by_zip_code = [ [79821, "https://goo.gl/maps/fyDXByr3a6WyCLfh9", 22 ],
@@ -258,6 +261,37 @@ class DashboardController < ApplicationController
       # f.legend(enabled: false)
       f.chart({defaultSeriesType: "column"})
     end
+
+    ##### Active Cases by Day
+
+    padded_total_deaths_by_day_data = total_deaths_by_day_data.pad(total_cases_by_day_data.length * -1, 0)
+
+    active_cases_by_day_data = []
+
+    for i in (0..total_cases_by_day_data.size - 1)
+        active_cases_by_day_data += [total_cases_by_day_data[i] - (total_recoveries_by_day_data[i] || 0) - padded_total_deaths_by_day_data[i]]
+    end
+
+    active_cases_by_day_average_data = []
+
+    for i in (6..active_cases_by_day_data.size - 1)
+      active_cases_by_day_average_data += [active_cases_by_day_data.sma(i,7).round(1)]
+    end
+
+    @active_cases_by_day = LazyHighCharts::HighChart.new('graph') do |f|
+      f.xAxis(title: { enabled: false }, categories: total_cases_by_day_categories.last(active_cases_by_day_data.size))
+      f.series(name: "Active Cases", data: active_cases_by_day_data)
+      f.series(name: "7-Day Average", data: active_cases_by_day_average_data.pad!((active_cases_by_day_average_data.size + 6) * -1,nil), type: "line")
+
+      f.yAxis [
+        { title: { enabled: false }, allowDecimals: false, max: active_cases_max, tickAmount: active_cases_by_day_tick_amount },
+      ]
+
+      f.colors(["#fed907", "#aaaaaa"])
+      # f.legend(enabled: false)
+      f.chart({defaultSeriesType: "column"})
+    end
+
 
     ##### Total Deaths by Day
     
