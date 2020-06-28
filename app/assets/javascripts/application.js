@@ -7,10 +7,10 @@
 //= require datatables
 
 $( document ).ready(function() {
-  $('.counter').countUp({
-    delay: 10,
-    time: 600
-  });
+  // $('.counter').countUp({
+  //   delay: 10,
+  //   time: 600
+  // });
 
   $("#totalCasesByZipCode").dataTable({
     "paging":   false,
