@@ -3,7 +3,7 @@ require 'facets/array/pad'
 class DashboardController < ApplicationController
   def index
 
-    @last_updated_on = Time.zone.parse("2020-07-08 7:48:00")
+    @last_updated_on = Time.zone.parse("2020-07-08 11:41:00")
 
     total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5", "5/6", "5/7", "5/8", "5/9", "5/10", "5/11", "5/12", "5/13", "5/14", "5/15", "5/16", "5/17", "5/18", "5/19", "5/20", "5/21", "5/22", "5/23", "5/24", "5/25", "5/26", "5/27", "5/28", "5/29", "5/30", "5/31", "6/1", "6/2", "6/3", "6/4", "6/5", "6/6", "6/7", "6/8", "6/9", "6/10", "6/11", "6/12", "6/13", "6/14", "6/15", "6/16", "6/17", "6/18", "6/19", "6/20", "6/21", "6/22", "6/23", "6/24", "6/25", "6/26", "6/27", "6/28", "6/29", "6/30", "7/1", "7/2", "7/3", "7/4", "7/5", "7/6", "7/7", "7/8"]
     
@@ -25,8 +25,10 @@ class DashboardController < ApplicationController
     patients_in_icu_categories = ["4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5", "5/6", "5/7", "5/8", "5/9", "5/10", "5/11", "5/12", "5/13", "5/14", "5/15", "5/16", "5/17", "5/18", "5/19", "5/20", "5/21", "5/22", "5/23", "5/24", "5/25", "5/26", "5/27", "5/28", "5/29", "5/30", "5/31", "6/1", "6/2", "6/3", "6/4", "6/5", "6/6", "6/7", "6/8", "6/9", "6/10", "6/11", "6/12", "6/13", "6/14", "6/15", "6/16", "6/17", "6/18", "6/19", "6/20", "6/21", "6/22", "6/23", "6/24", "6/25", "6/26", "6/27", "6/28", "6/29", "6/30", "7/1", "7/2", "7/3", "7/4", "7/5", "7/6", "7/7", "7/8"]
     patients_hospitalized_data = [19, 26, 27, 27, 27, 40, 48, 52, 48, 57, 58, 61, 65, 48, 38, 25, 29, 38, 37, 35, 33, 38, 36, 38, 35, 35, 52, 53, 58, 61, 59, 65, 71, 68, 62, 83, 82, 85, 80, 80, 73, 76, 74, 78, 74, 77, 107, 109, 109, 119, 116, 109, 112, 106, 110, 118, 111, 106, 103, 99, 96, 91, 106, 98, 98, 87, 96, 95, 82, 81, 85, 88, 85, 78, 87, 98, 101, 106, 108, 102, 95, 95, 107, 108, 118, 121, 147, 149, 160, 177, 180, 193, 200, 211, 218, 246, 259]
     patients_in_icu_data = [8, 8, 10, 10, 10, 12, 19, 21, 22, 23, 23, 26, 27, 10, 11, 10, 8, 13, 13, 18, 21, 26, 16, 18, 19, 19, 27, 31, 30, 39, 21, 38, 40, 39, 40, 47, 40, 39, 34, 40, 35, 38, 39, 41, 32, 35, 46, 52, 56, 65, 66, 61, 66, 67, 65, 67, 67, 59, 54, 56, 59, 54, 63, 54, 56, 53, 64, 61, 59, 54, 45, 51, 51, 50, 51, 52, 55, 52, 52, 52, 51, 50, 47, 48, 58, 63, 68, 64, 69, 70, 74, 69, 71, 71, 70, 71, 75]
-    patients_max_value = 300
-    patients_tick_amount = 7
+    patients_hospitalized_max_value = 300
+    patients_hospitalized_tick_amount = 7
+    patients_in_icu_max_value = 100
+    patients_in_icu_tick_amount = 6
 
     total_cases_by_age_range_categories = ["12 & Under", "Teens", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99", "100-109"]
     total_cases_by_age_range_data = [357, 404, 1922, 1585, 1227, 1055, 743, 376, 258, 103, 5]
@@ -404,7 +406,7 @@ class DashboardController < ApplicationController
       f.series(name: "7-Day Average", data: patients_hospitalized_average_data.pad!((patients_hospitalized_average_data.size + 6) * -1,nil), type: "line")
 
       f.yAxis [
-        { title: { enabled: false }, allowDecimals: false, max: patients_max_value, tickAmount: patients_tick_amount },
+        { title: { enabled: false }, allowDecimals: false, max: patients_hospitalized_max_value, tickAmount: patients_hospitalized_tick_amount },
       ]
 
       f.colors(["#fed907", "#aaaaaa"])
@@ -426,7 +428,7 @@ class DashboardController < ApplicationController
       f.series(name: "7-Day Average", data: patients_in_icu_average_data.pad!((patients_in_icu_average_data.size + 6) * -1,nil), type: "line")
 
       f.yAxis [
-        { title: { enabled: false }, allowDecimals: false, max: patients_max_value, tickAmount: patients_tick_amount },
+        { title: { enabled: false }, allowDecimals: false, max: patients_in_icu_max_value, tickAmount: patients_in_icu_tick_amount },
       ]
 
       f.colors(["#fed907", "#aaaaaa"])
