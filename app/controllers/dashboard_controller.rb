@@ -36,6 +36,7 @@ class DashboardController < ApplicationController
     total_cases_by_age_range_categories = ["12 & Under", "Teens", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99", "100-109"]
     total_cases_by_age_range_data = [893, 1104, 4072, 3290, 2716, 2363, 1557, 809, 546, 268, 14]
     total_cases_by_age_range_max = 4500
+    total_cases_by_age_range_tick_amount = 6
 
     total_deaths_by_age_range_data = [0, 1, 1, 3, 20, 39, 67, 86, 83, 53, 1]
     total_deaths_by_age_range_max = 100
@@ -369,7 +370,7 @@ class DashboardController < ApplicationController
       f.series(name: "Total Cases", data: total_cases_by_age_range_data)
 
       f.yAxis [
-        { title: { enabled: false }, allowDecimals: false, max: total_cases_by_age_range_max },
+        { title: { enabled: false }, allowDecimals: false, max: total_cases_by_age_range_max, tickAmount: total_cases_by_age_range_tick_amount },
       ]
 
       f.legend(enabled: false)
