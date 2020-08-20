@@ -279,7 +279,7 @@ class DashboardController < ApplicationController
     @new_cases_by_day = LazyHighCharts::HighChart.new('graph') do |f|
       f.xAxis(title: { enabled: false }, categories: total_cases_by_day_categories.drop(1))
       f.series(name: "New Cases", data: new_cases_by_day_data)
-      f.series(name: "Delayed Positive Tests", data: delayed_results_by_day_data)
+      f.series(name: "Delayed Positive Cases", data: delayed_results_by_day_data)
       f.series(name: "7-Day Average (New Cases)", data: new_cases_by_day_average_data.pad!((new_cases_by_day_average_data.size + 6) * -1,nil), type: "line")
 
       f.yAxis [

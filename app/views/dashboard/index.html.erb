@@ -52,7 +52,7 @@
       <div class="container">
         <div class="row">
           <div class="col col-md-10 offset-md-1 text-left">
-            <h2><%= @last_updated_on.strftime("%A, %B %e") %>:<br><%= pluralize @new_cases, "New Coronavirus Case" %><%= ", #{pluralize(@delayed_results, "Delayed Positive Test") if @delayed_results > 0}" %>, <%= pluralize @new_deaths, "New Death" %> </h2>
+            <h2><%= @last_updated_on.strftime("%A, %B %e") %>:<br><%= pluralize @new_cases, "New Coronavirus Case" %><%= ", #{pluralize(@delayed_results, "Delayed Positive Case") if @delayed_results > 0}" %>, <%= pluralize @new_deaths, "New Death" %> </h2>
             <p class="text-center">Face coverings are now required to be worn in public. Do not gather in groups larger than ten people and maintain six feet of social distancing from others. <%= link_to "Read More", "http://epstrong.org/health-orders.php" %></p>
           </div>
         </div>
