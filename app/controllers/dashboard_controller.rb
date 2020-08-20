@@ -3,12 +3,12 @@ require 'facets/array/pad'
 class DashboardController < ApplicationController
   def index
 
-    @last_updated_on = Time.zone.parse("2020-08-20 15:40:00")
+    @last_updated_on = Time.zone.parse("2020-08-20 15:51:00")
 
     total_cases_by_day_categories = ["3/13", "3/14", "3/15", "3/16", "3/17", "3/18", "3/19", "3/20", "3/21", "3/22", "3/23", "3/24", "3/25", "3/26", "3/27", "3/28", "3/29", "3/30", "3/31", "4/1", "4/2", "4/3", "4/4", "4/5", "4/6", "4/7", "4/8", "4/9", "4/10", "4/11", "4/12", "4/13", "4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26", "4/27", "4/28", "4/29", "4/30", "5/1", "5/2", "5/3", "5/4", "5/5", "5/6", "5/7", "5/8", "5/9", "5/10", "5/11", "5/12", "5/13", "5/14", "5/15", "5/16", "5/17", "5/18", "5/19", "5/20", "5/21", "5/22", "5/23", "5/24", "5/25", "5/26", "5/27", "5/28", "5/29", "5/30", "5/31", "6/1", "6/2", "6/3", "6/4", "6/5", "6/6", "6/7", "6/8", "6/9", "6/10", "6/11", "6/12", "6/13", "6/14", "6/15", "6/16", "6/17", "6/18", "6/19", "6/20", "6/21", "6/22", "6/23", "6/24", "6/25", "6/26", "6/27", "6/28", "6/29", "6/30", "7/1", "7/2", "7/3", "7/4", "7/5", "7/6", "7/7", "7/8", "7/9", "7/10", "7/11", "7/12", "7/13", "7/14", "7/15", "7/16", "7/17", "7/18", "7/19", "7/20", "7/21", "7/22", "7/23", "7/24", "7/25", "7/26", "7/27", "7/28", "7/29", "7/30", "7/31", "8/1", "8/2", "8/3", "8/4", "8/5", "8/6", "8/7", "8/8", "8/9", "8/10", "8/11", "8/12", "8/13", "8/14", "8/15", "8/16", "8/17", "8/18", "8/19", "8/20"]
     
     total_cases_by_day_data = [1, 1, 2, 3, 3, 3, 6, 6, 6, 6, 10, 12, 21, 25, 30, 35, 40, 46, 50, 68, 78, 96, 106, 115, 125, 153, 192, 225, 252, 269, 292, 300, 346, 393, 451, 482, 505, 531, 540, 587, 645, 674, 706, 780, 802, 829, 857, 887, 924, 961, 986, 998, 1029, 1080, 1119, 1190, 1276, 1322, 1340, 1348, 1413, 1456, 1607, 1655, 1726, 1772, 1800, 1852, 1930, 2046, 2160, 2265, 2340, 2376, 2393, 2461, 2569, 2623, 2704, 2764, 2794, 2833, 2872, 3069, 3213, 3298, 3376, 3453, 3512, 3582, 3650, 3695, 3794, 3834, 3911, 3948, 3999, 4088, 4178, 4340, 4488, 4553, 4677, 4809, 4984, 5217, 5330, 5614, 5745, 5928, 6124, 6389, 6665, 6953, 7213, 7461, 7642, 8035, 8385, 8746, 9099, 9510, 9716, 9953, 10298, 10638, 10843, 11132, 11573, 11769, 12041, 12297, 12501, 12750, 12971, 13240, 13327, 13552, 13807, 13939, 14276, 14410, 14712, 14914, 15142, 15427, 15596, 15908, 16040, 16308, 16396, 16936, 17210, 17378, 17632, 18079, 18350, 18486, 18682, 18914, 19057]
-    delayed_cases_by_day_data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34]
+    delayed_results_by_day_data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 325, 0, 0, 0, 356, 214, 11, 55, 80, 34]
     total_cases_by_day_max = 20000
     total_cases_by_day_tick_amount = 11
     new_cases_by_day_max = 550
@@ -164,35 +164,36 @@ class DashboardController < ApplicationController
     @total_cases = total_cases_by_day_data.last
     @total_recoveries = total_recoveries_by_day_data.last
     @total_deaths = total_deaths_by_day_data.last
-    @new_cases = total_cases_by_day_data.last(2)[1] - total_cases_by_day_data.last(2)[0]
-    if @last_updated_on <= Time.zone.parse("2020-08-11 23:59:59")
-      # 8/11 Adjustment
-      @new_cases = 215
-    end
-    if @last_updated_on <= Time.zone.parse("2020-08-15 23:59:59")
-      # 8/15 Adjustment
-      @new_cases = 91
-    end
-    if @last_updated_on <= Time.zone.parse("2020-08-16 23:59:59")
-      # 8/16 Adjustment
-      @new_cases = 57
-    end
-    if @last_updated_on <= Time.zone.parse("2020-08-17 23:59:59")
-      # 8/17 Adjustment
-      @new_cases = 125
-    end
-    if @last_updated_on <= Time.zone.parse("2020-08-18 23:59:59")
-      # 8/18 Adjustment
-      @new_cases = 141
-    end
-    if @last_updated_on <= Time.zone.parse("2020-08-19 23:59:59")
-      # 8/19 Adjustment
-      @new_cases = 152
-    end
-    if @last_updated_on <= Time.zone.parse("2020-08-20 23:59:59")
-      # 8/20 Adjustment
-      @new_cases = 109
-    end
+    @new_cases = total_cases_by_day_data.last(2)[1] - total_cases_by_day_data.last(2)[0] - delayed_results_by_day_data.last
+    @delayed_results = delayed_results_by_day_data.last
+    # if @last_updated_on <= Time.zone.parse("2020-08-11 23:59:59")
+    #   # 8/11 Adjustment
+    #   @new_cases = 215
+    # end
+    # if @last_updated_on <= Time.zone.parse("2020-08-15 23:59:59")
+    #   # 8/15 Adjustment
+    #   @new_cases = 91
+    # end
+    # if @last_updated_on <= Time.zone.parse("2020-08-16 23:59:59")
+    #   # 8/16 Adjustment
+    #   @new_cases = 57
+    # end
+    # if @last_updated_on <= Time.zone.parse("2020-08-17 23:59:59")
+    #   # 8/17 Adjustment
+    #   @new_cases = 125
+    # end
+    # if @last_updated_on <= Time.zone.parse("2020-08-18 23:59:59")
+    #   # 8/18 Adjustment
+    #   @new_cases = 141
+    # end
+    # if @last_updated_on <= Time.zone.parse("2020-08-19 23:59:59")
+    #   # 8/19 Adjustment
+    #   @new_cases = 152
+    # end
+    # if @last_updated_on <= Time.zone.parse("2020-08-20 23:59:59")
+    #   # 8/20 Adjustment
+    #   @new_cases = 109
+    # end
     @new_deaths = total_deaths_by_day_data.last(2)[1] - total_deaths_by_day_data.last(2)[0]
     
     zip_data_max_value = @total_cases_by_zip_code.map { |entry| entry[2] }.max
@@ -243,30 +244,30 @@ class DashboardController < ApplicationController
     new_cases_by_day_data = []
 
     for i in (1..total_cases_by_day_data.size - 1)
-      if i == 151
-        # 8/11 Adjustment
-        new_cases_by_day_data += [215]
-      elsif i == 155
-        # 8/15 Adjustment
-        new_cases_by_day_data += [91]
-      elsif i == 156
-        # 8/16 Adjustment
-        new_cases_by_day_data += [57]
-      elsif i == 157
-        # 8/17 Adjustment
-        new_cases_by_day_data += [125]
-      elsif i == 158
-        # 8/18 Adjustment
-        new_cases_by_day_data += [141]
-      elsif i == 159
-        # 8/19 Adjustment
-        new_cases_by_day_data += [152]
-      elsif i == 160
-        # 8/20 Adjustment
-        new_cases_by_day_data += [109]
-      else
-        new_cases_by_day_data += [total_cases_by_day_data[i] - total_cases_by_day_data[i - 1]]
-      end
+      # if i == 151
+      #   # 8/11 Adjustment
+      #   new_cases_by_day_data += [215]
+      # elsif i == 155
+      #   # 8/15 Adjustment
+      #   new_cases_by_day_data += [91]
+      # elsif i == 156
+      #   # 8/16 Adjustment
+      #   new_cases_by_day_data += [57]
+      # elsif i == 157
+      #   # 8/17 Adjustment
+      #   new_cases_by_day_data += [125]
+      # elsif i == 158
+      #   # 8/18 Adjustment
+      #   new_cases_by_day_data += [141]
+      # elsif i == 159
+      #   # 8/19 Adjustment
+      #   new_cases_by_day_data += [152]
+      # elsif i == 160
+      #   # 8/20 Adjustment
+      #   new_cases_by_day_data += [109]
+      # else
+        new_cases_by_day_data += [total_cases_by_day_data[i] - total_cases_by_day_data[i - 1] - delayed_results_by_day_data[i - 1]]
+      # end
     end
 
     new_cases_by_day_average_data = []
@@ -278,8 +279,8 @@ class DashboardController < ApplicationController
     @new_cases_by_day = LazyHighCharts::HighChart.new('graph') do |f|
       f.xAxis(title: { enabled: false }, categories: total_cases_by_day_categories.drop(1))
       f.series(name: "New Cases", data: new_cases_by_day_data)
-      # f.series(name: "Delayed Cases", data: delayed_cases_by_day_data)
-      f.series(name: "7-Day Average", data: new_cases_by_day_average_data.pad!((new_cases_by_day_average_data.size + 6) * -1,nil), type: "line")
+      f.series(name: "Delayed Test Results", data: delayed_results_by_day_data)
+      f.series(name: "7-Day Average (New Cases)", data: new_cases_by_day_average_data.pad!((new_cases_by_day_average_data.size + 6) * -1,nil), type: "line")
 
       f.yAxis [
         { title: { enabled: false }, allowDecimals: false, max: new_cases_by_day_max, tickAmount: new_cases_by_day_tick_amount },
@@ -288,7 +289,7 @@ class DashboardController < ApplicationController
 
       f.plotOptions(series: { stacking: 'normal' })
 
-      f.colors(["#fed907", "#aaaaaa", "#0000ff"])
+      f.colors(["#fed907", "#fe8107", "#aaaaaa"])
       # f.legend(enabled: false)
       f.chart({defaultSeriesType: "column"})
     end
