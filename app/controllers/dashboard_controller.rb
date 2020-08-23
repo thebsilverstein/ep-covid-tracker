@@ -35,7 +35,7 @@ class DashboardController < ApplicationController
     patients_in_icu_tick_amount = 6
 
     total_cases_by_age_range_categories = ["12 & Under", "Teens", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99", "100-109"]
-    total_cases_by_age_range_data = [954, 1226, 4520, 3583, 2967, 2579, 1707, 888, 586, 291, 15]
+    total_cases_by_age_range_data = [956, 1230, 4545, 3604, 2981, 2590, 1708, 888, 588, 291, 15]
     total_cases_by_age_range_max = 5000
     total_cases_by_age_range_tick_amount = 6
 
