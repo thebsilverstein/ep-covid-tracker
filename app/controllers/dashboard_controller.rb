@@ -66,7 +66,7 @@ class DashboardController < ApplicationController
                                  [79922, "https://goo.gl/maps/a68MXDGZSk2jr9u7A", 155 ],
                                  [79924, "https://goo.gl/maps/U9yL1pJQTKv2riS56", 1082 ],
                                  [79925, "https://goo.gl/maps/gTb8iXhw6RBuHPpu7", 1087 ],
-                                 [79926, "https://goo.gl/maps/gTb8iXhw6RBuHPpu7", 1 ],
+                                 [79926, "https://goo.gl/maps/oEtmnupz5tzeZT1HA", 1 ],
                                  [79927, "https://goo.gl/maps/nquJLGWtgKiU3Z4o7", 1243 ],
                                  [79928, "https://goo.gl/maps/XwoKG1sLG1FiEBwE9", 1966 ],
                                  [79930, "https://goo.gl/maps/uwWrGWqbYkCqTpv99", 580 ],
