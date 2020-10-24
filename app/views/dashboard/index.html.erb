@@ -10,21 +10,29 @@
       
       <div class="container">
         <div class="row">
-          <div class="col-6 mb-3 col-xl-3 mb-xl-0">
+          <div class="col-4 mb-3">
             <span class="counter"><%= number_with_delimiter @total_cases %></span>
             <p>Total Cases</p>
           </div>
-          <div class="col-6 mb-3 col-xl-3 mb-xl-0">
+          <div class="col-4 mb-3">
             <span class="counter recoveries"><%= number_with_delimiter @total_recoveries %></span>
             <p>Total Recoveries</p>
           </div>
-          <div class="col-6 col-xl-3">
+          <div class="col-4 mb-3">
             <span class="counter deaths"><%= number_with_delimiter @total_deaths %></span>
             <p>Total Deaths</p>
           </div>
-          <div class="col-6 col-xl-3">
+          <div class="col-4">
             <span class="counter"><%= number_with_delimiter @active_cases %></span>
             <p>Active Cases</p>
+          </div>
+          <div class="col-4">
+            <span class="counter"><%= number_with_delimiter @hospitalized %></span>
+            <p>Hospitalized</p>
+          </div>
+          <div class="col-4">
+            <span class="counter"><%= number_with_delimiter @in_icu %></span>
+            <p>In ICU</p>
           </div>
         </div>
       </div>

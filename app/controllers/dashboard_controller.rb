@@ -516,9 +516,12 @@ class DashboardController < ApplicationController
     end
 
     @total_cases = total_cases_by_day_data.last
-    @active_cases = active_cases_by_day_data.last
     @total_recoveries = total_recoveries_by_day_data.last
     @total_deaths = total_deaths_by_day_data.last
+    @active_cases = active_cases_by_day_data.last
+    @hospitalized = patients_hospitalized_data.last
+    @in_icu = patients_in_icu_data.last
+
     @new_cases = total_cases_by_day_data.last(2)[1] - total_cases_by_day_data.last(2)[0] - delayed_results_by_day_data.last
     @delayed_results = delayed_results_by_day_data.last
 
