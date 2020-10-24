@@ -2,25 +2,29 @@
 
 <div class="container-fluid header py-3 py-lg-4">
   <div class="row align-items-center">
-    <div class="col-lg-7 text-center text-lg-left mb-3 mb-lg-0">
+    <div class="col-lg-6 text-center text-lg-left mb-3 mb-lg-0">
       <h1>El Paso, Texas COVID-19 Tracker</h1>
       <p>Last Updated: <%= @last_updated_on.strftime("%B %e at %l:%M %p") %> MDT <em>(<%= time_ago_in_words(@last_updated_on) %> ago)</em></p>
     </div>
-    <div class="col-lg-5 text-center total-cases">
+    <div class="col-lg-6 text-center total-cases">
       
       <div class="container">
         <div class="row">
-          <div class="col-4">
-            <span class="counter"><%= @total_cases %></span>
+          <div class="col-6 mb-3 col-xl-3 mb-xl-0">
+            <span class="counter"><%= number_with_delimiter @total_cases %></span>
             <p>Total Cases</p>
           </div>
-          <div class="col-4">
-            <span class="counter deaths"><%= @total_deaths %></span>
+          <div class="col-6 col-xl-3">
+            <span class="counter recoveries"><%= number_with_delimiter @total_recoveries %></span>
+            <p>Total Recoveries</p>
+          </div>
+          <div class="col-6 col-xl-3">
+            <span class="counter deaths"><%= number_with_delimiter @total_deaths %></span>
             <p>Total Deaths</p>
           </div>
-          <div class="col-4">
-            <span class="counter recoveries"><%= @total_recoveries %></span>
-            <p>Total Recoveries</p>
+          <div class="col-6 mb-3 col-xl-3 mb-xl-0">
+            <span class="counter"><%= number_with_delimiter @active_cases %></span>
+            <p>Active Cases</p>
           </div>
         </div>
       </div>
@@ -52,7 +56,7 @@
       <div class="container">
         <div class="row">
           <div class="col col-md-10 offset-md-1 text-left">
-            <h2><%= @last_updated_on.strftime("%A, %B %e") %>:<br><%= pluralize @new_cases, "New Coronavirus Case" %><%= ", #{pluralize(@delayed_results, "Delayed Positive Case") if @delayed_results > 0}" %>, <%= pluralize @new_deaths, "New Death" %> </h2>
+            <h2><%= @last_updated_on.strftime("%A, %B %e") %>:<br><%= pluralize number_with_delimiter(@new_cases), "New Coronavirus Case" %><%= ", #{pluralize(@delayed_results, "Delayed Positive Case") if @delayed_results > 0}" %>, <%= pluralize @new_deaths, "New Death" %> </h2>
             <p class="text-center">Face coverings are now required to be worn in public. Do not gather in groups larger than ten people and maintain six feet of social distancing from others. <%= link_to "Read More", "http://epstrong.org/health-orders.php" %></p>
           </div>
         </div>
