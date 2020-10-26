@@ -207,7 +207,7 @@
           <% for point in @total_cases_by_zip_code %>
             <tr>
               <td><%= link_to point[0], point[1] %></td>
-              <td><%= point[2] %></td>
+              <td><%= number_with_delimiter point[2] %></td>
             </tr>
           <% end %>
         </tbody>
