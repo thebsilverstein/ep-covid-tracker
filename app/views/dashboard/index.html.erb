@@ -65,7 +65,7 @@
         <div class="row">
           <div class="col col-md-10 offset-md-1 text-left">
             <h2><%= @last_updated_on.strftime("%A, %B %e") %>:<br><%= pluralize number_with_delimiter(@new_cases), "New Coronavirus Case" %><%= ", #{pluralize(@delayed_results, "Delayed Positive Case") if @delayed_results > 0}" %>, <%= pluralize @new_deaths, "New Death" %> </h2>
-            <p class="text-center">All non-essential services in El Paso County are shut down for two weeks effective Friday, October 30 at 12:00 AM. <br>Polling sites for the November election will remain OPEN as essential services. <%= link_to "Read More", "https://kvia.com/coronavirus/2020/10/29/el-paso-county-judge-considers-more-restrictions-possible-shutdown-due-to-virus-surge/" %></p>
+            <p class="text-center">All non-essential services in El Paso County are shut down for two weeks effective Friday, October 30 at 12:00 AM. <%= link_to "Read More", "https://kvia.com/coronavirus/2020/10/29/el-paso-county-judge-considers-more-restrictions-possible-shutdown-due-to-virus-surge/" %></p>
           </div>
         </div>
       </div>
@@ -104,11 +104,11 @@
 <div class="container mb-5">
   <div class="row">
     <div class="col-lg-6 mb-5 mb-lg-0">
-      <h3>New Cases by Day</h3>
+      <h3>New Cases by Day <span><%= yesterday(@new_cases_compared_to_yesterday) %></span></h3>
       <%= high_chart("new_cases_by_day", @new_cases_by_day) %>
     </div>
     <div class="col-lg-6">
-      <h3>New Recoveries by Day</h3>
+      <h3>New Recoveries by Day <span><%= yesterday(@new_recoveries_compared_to_yesterday) %></h3>
       <%= high_chart("new_recoveries_by_day", @new_recoveries_by_day) %>
     </div>
   </div>
@@ -117,7 +117,7 @@
 <div class="container mb-5">
   <div class="row">
     <div class="col-lg-12 mb-5 mb-lg-0">
-      <h3>Active Cases by Day</h3>
+      <h3>Active Cases by Day <span><%= yesterday(@active_cases_compared_to_yesterday) %></h3>
       <%= high_chart("active_cases_by_day", @active_cases_by_day) %>
     </div>
   </div>
@@ -126,11 +126,11 @@
 <div class="container mb-5">
   <div class="row">
     <div class="col-lg-6 mb-5 mb-lg-0">
-      <h3>Patients Hospitalized</h3>
+      <h3>Patients Hospitalized <span><%= yesterday(@hospitalized_compared_to_yesterday) %></h3>
       <%= high_chart("patients_hospitalized", @patients_hospitalized) %>
     </div>
     <div class="col-lg-6">
-      <h3>Patients in ICU</h3>
+      <h3>Patients in ICU <span><%= yesterday(@in_icu_compared_to_yesterday) %></h3>
       <%= high_chart("patients_in_icu", @patients_in_icu) %>
     </div>
   </div>
@@ -162,7 +162,7 @@
       </div>
     </div>
     <div class="col-lg-6">
-      <h3>New Deaths by Day</h3>
+      <h3>New Deaths by Day <span><%= yesterday(@total_deaths_compared_to_yesterday) %></h3>
       <%= high_chart("new_deaths_by_day", @new_deaths_by_day) %>
     </div>
   </div>
