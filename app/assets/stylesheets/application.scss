@@ -100,11 +100,11 @@ h3 {
   line-height: 1.1em;
   text-align: center;
   .chart-individual-zip-code & {
-    font-size: 1.1em;
+    font-size: 1.2em;
   }
   span {
     font-weight: 500;
-    font-size: 0.67em;
+    font-size: 14px;
     text-align: center;
     display: block;
   }
@@ -173,6 +173,7 @@ p {
 
 th, td {
   font-size: 0.9em;
+  width: 25%;
 }
 
 th {
@@ -201,4 +202,16 @@ table.dataTable.table-sm .sorting::before, table.dataTable.table-sm .sorting_asc
 
 .btn-sm {
   font-size: 0.7em;
+}
+
+.fa-caret-up, .fa-caret-down {
+  font-size: 1.2em;
+}
+
+.fa-bad {
+  color: #f70000;
+}
+
+.fa-good {
+  color: #26dc4e;
 }

@@ -108,7 +108,7 @@
       <%= high_chart("new_cases_by_day", @new_cases_by_day) %>
     </div>
     <div class="col-lg-6">
-      <h3>New Recoveries by Day <span><%= yesterday(@new_recoveries_compared_to_yesterday) %></h3>
+      <h3>New Recoveries by Day <span><%= yesterday(@new_recoveries_compared_to_yesterday, true) %></h3>
       <%= high_chart("new_recoveries_by_day", @new_recoveries_by_day) %>
     </div>
   </div>
@@ -192,7 +192,7 @@
 
 
 <div class="container mb-5">
-  <div class="row">
+  <div class="row mb-5">
     <div class="col">
       <h3>Total Cases by Zip Code</h3>
       
@@ -201,28 +201,40 @@
           <tr>
             <th>Zip Code</th>
             <th>Total Cases</th>
+            <th>Active Cases</th>
+            <th>Change Since Yesterday</th>
           </tr>
         </thead>
         <tbody>
-          <% for point in @total_cases_by_zip_code %>
+          <% for point in @total_and_active_cases_by_zip_code %>
             <tr>
               <td><%= link_to point[0], point[1] %></td>
               <td><%= number_with_delimiter point[2] %></td>
+              <td><%= number_with_delimiter point[3] %></td>
+              <td><%= yesterday(@active_cases_by_individual_zip_code_compared_to_yesterday[point[0]], false, true) %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
   </div>
-  <div class="row mt-5">
-      <% @total_cases_by_individual_zip_code.each do |zip_code, chart| %>
-        <div class="col-md-6 col-lg-4 chart-individual-zip-code mb-5">
-          <h3>Total Cases in <%= link_to zip_code, @total_cases_by_zip_code.find { |point| point[0] == zip_code }[1] %></h3>
-          <%=  %>
-          <%= high_chart("total_cases_by_individual_zip_code_#{zip_code}", chart) %>
-        </div>
-      <% end %>
-  </div>
+
+  <% for point in @total_and_active_cases_by_zip_code %>
+    <div class="row">
+      <div class="col-md-6 chart-individual-zip-code mb-5">
+        <h3>Total Cases in <%= link_to point[0], point[1] %></h3>
+        <%=  %>
+        <%= high_chart("total_cases_by_individual_zip_code_#{point[0]}", @total_cases_by_individual_zip_code[point[0]]) %>
+      </div>
+      <div class="col-md-6 chart-individual-zip-code mb-5">
+        <h3>Active Cases in <%= link_to point[0], point[1] %> <span><%= yesterday(@active_cases_by_individual_zip_code_compared_to_yesterday[point[0]]) %></span></h3>
+        <%=  %>
+        <%= high_chart("active_cases_by_individual_zip_code_#{point[0]}", @active_cases_by_individual_zip_code[point[0]]) %>
+      </div>
+    </div>
+  <% end %>
+
+  
 </div>
 
 <div class="container mb-5">
