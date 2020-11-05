@@ -5,7 +5,7 @@ module DashboardHelper
       return "No change since yesterday"
     end
     str = ""
-    str += "#{number_with_delimiter(value)}"
+    str += "#{number_with_delimiter(value.abs)}"
     str += " more than yesterday" if value > 0
     str += " less than yesterday" if value < 0
     str
