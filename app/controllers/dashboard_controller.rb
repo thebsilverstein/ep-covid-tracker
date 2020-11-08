@@ -134,8 +134,8 @@ class DashboardController < ApplicationController
                        [79938, [2177, 2271, 2338, 2445, 2620]],
                        ]
 
-    zip_active_data_max_value = 3200
-    zip_active_data_tick_interval = 800
+    zip_active_data_max_value = 3500
+    zip_active_data_tick_interval = 700
 
     @links = [ ["epstrong.org - May 21, 2020 – #{@last_updated_on.strftime('%B %e, %Y')}", "http://epstrong.org/results.php"],
                ["City of El Paso Facebook - May 20, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/city-reports-two-additional-deaths/3037450162961073/"],
