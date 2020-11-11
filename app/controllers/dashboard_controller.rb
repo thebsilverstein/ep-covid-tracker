@@ -41,7 +41,7 @@ class DashboardController < ApplicationController
     total_cases_by_age_range_tick_amount = 9
 
     total_deaths_by_age_range_data = [0, 1, 4, 10, 39, 74, 122, 176, 166, 103, 1]
-    total_deaths_by_age_range_max = 175
+    total_deaths_by_age_range_max = 200
 
     total_cases_by_gender_male = 32101
     total_cases_by_gender_female = 35383
@@ -134,8 +134,8 @@ class DashboardController < ApplicationController
                        [79938, [2177, 2271, 2338, 2445, 2620, 2660, 2750, 2879]],
                        ]
 
-    zip_active_data_max_value = 3500
-    zip_active_data_tick_interval = 700
+    zip_active_data_max_value = 4000
+    zip_active_data_tick_interval = 1000
 
     @links = [ ["epstrong.org - May 21, 2020 – #{@last_updated_on.strftime('%B %e, %Y')}", "http://epstrong.org/results.php"],
                ["City of El Paso Facebook - May 20, 2020", "https://www.facebook.com/notes/city-of-el-paso-texas-municipal-government/city-reports-two-additional-deaths/3037450162961073/"],
