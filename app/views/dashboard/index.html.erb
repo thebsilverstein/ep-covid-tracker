@@ -65,7 +65,7 @@
         <div class="row">
           <div class="col col-md-10 offset-md-1 text-left">
             <h2><%= @last_updated_on.strftime("%A, %B %e") %>:<br><%= pluralize number_with_delimiter(@new_cases), "New Coronavirus Case" %><%= ", #{pluralize(@delayed_results, "Delayed Positive Case") if @delayed_results > 0}" %>, <%= pluralize @new_deaths, "New Death" %> </h2>
-            <p class="text-center">All non-essential services in El Paso County are shut down for two weeks effective Friday, October 30 at 12:00 AM. <%= link_to "Read More", "https://kvia.com/coronavirus/2020/10/29/el-paso-county-judge-considers-more-restrictions-possible-shutdown-due-to-virus-surge/" %></p>
+            <p class="text-center">All non-essential services in El Paso County are shut down until Tuesday, December 1. <%= link_to "Read More", "https://kvia.com/coronavirus/2020/11/11/watch-live-at-4pm-el-paso-county-judge-samaniego-holds-covid-19-news-conference/", target: "_blank" %></p>
           </div>
         </div>
       </div>
