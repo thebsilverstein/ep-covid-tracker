@@ -2,7 +2,7 @@ module DashboardHelper
 
   def yesterday(value, reverse = false, short = false)
     if value == 0
-      short == false ? "No change compared to yesterday" : 0
+      return (short == false ? "No change compared to yesterday" : 0)
     end
     str = ""
     str += "<i class='fas fa-caret-up fa-#{reverse == false ? 'bad' : 'good'}'></i> +" if value > 0
