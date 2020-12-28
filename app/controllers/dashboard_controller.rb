@@ -40,7 +40,7 @@ class DashboardController < ApplicationController
     total_cases_by_age_range_max = 21000
     total_cases_by_age_range_tick_interval = 3000
 
-    total_deaths_by_age_range_data = [0, 2, 5, 17, 72, 169, 297, 351, 326, 155, 3]
+    total_deaths_by_age_range_data = [0, 2, 5, 18, 77, 170, 306, 356, 333, 155, 3]
     total_deaths_by_age_range_max = 400
 
     total_cases_by_gender_male = 46146
