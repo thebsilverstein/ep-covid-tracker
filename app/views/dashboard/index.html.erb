@@ -65,7 +65,7 @@
         <div class="row">
           <div class="col col-md-10 offset-md-1 text-left">
             <h2><%= @last_updated_on.strftime("%A, %B %e") %>:<br><%= pluralize number_with_delimiter(@new_cases), "New Coronavirus Case" %><%= ", #{pluralize(@delayed_results, "Delayed Positive Case") if @delayed_results > 0}" %>, <%= pluralize @new_deaths, "New Death" %> </h2>
-            <p class="text-center">COVID-19 testing is available throughout El Paso County. <%= link_to "Read More", "http://epstrong.org/testing.php", target: "_blank" %></p>
+            <p class="text-center">Get vaccinated! Pre-register to reserve your spot. <%= link_to "More Info", "https://www.epcovidvaccine.com", target: "_blank" %></p>
           </div>
         </div>
       </div>
