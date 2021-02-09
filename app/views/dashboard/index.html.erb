@@ -9,7 +9,7 @@
     <div class="col-lg-6 text-center total-cases">
       
       <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
           <div class="col-4 mb-3">
             <span class="counter"><%= number_with_delimiter @total_cases %></span>
             <p>Total Cases</p>
@@ -22,17 +22,25 @@
             <span class="counter deaths"><%= number_with_delimiter @total_deaths %></span>
             <p>Total Deaths</p>
           </div>
-          <div class="col-4">
+          <div class="col-4 mb-3">
             <span class="counter"><%= number_with_delimiter @active_cases %></span>
             <p>Active Cases</p>
           </div>
-          <div class="col-4">
+          <div class="col-4 mb-3">
             <span class="counter"><%= number_with_delimiter @hospitalized %></span>
             <p>Hospitalized</p>
           </div>
-          <div class="col-4">
+          <div class="col-4 mb-3">
             <span class="counter"><%= number_with_delimiter @in_icu %></span>
             <p>In ICU</p>
+          </div>
+          <div class="col-4">
+            <span class="counter"><%= number_with_delimiter @vaccines_allocated %></span>
+            <p>Vaccines Allocated</p>
+          </div>
+          <div class="col-4">
+            <span class="counter recoveries"><%= number_with_delimiter @vaccines_administered %></span>
+            <p>Vaccines Administered</p>
           </div>
         </div>
       </div>
@@ -64,7 +72,7 @@
       <div class="container">
         <div class="row">
           <div class="col col-md-10 offset-md-1 text-left">
-            <h2><%= @last_updated_on.strftime("%A, %B %e") %>:<br><%= pluralize number_with_delimiter(@new_cases), "New Coronavirus Case" %><%= ", #{pluralize(@delayed_results, "Delayed Positive Case") if @delayed_results > 0}" %>, <%= pluralize @new_deaths, "New Death" %> </h2>
+            <h2><%= @last_updated_on.strftime("%A, %B %e") %>:<br><span><%= pluralize number_with_delimiter(@new_cases), "New Coronavirus Case" %><%= ", #{pluralize(@delayed_results, "Delayed Positive Case") if @delayed_results > 0}" %>, <%= pluralize @new_deaths, "New Death" %>, <%= number_with_delimiter(@new_vaccines_administered) %> Vaccines Administered</span></h2>
             <p class="text-center">Get vaccinated! Pre-register to reserve your spot. <%= link_to "More Info", "https://www.epcovidvaccine.com", target: "_blank" %></p>
           </div>
         </div>
@@ -110,6 +118,19 @@
     <div class="col-lg-6">
       <h3>New Recoveries by Day <span><%= yesterday(@new_recoveries_compared_to_yesterday, true) %></h3>
       <%= high_chart("new_recoveries_by_day", @new_recoveries_by_day) %>
+    </div>
+  </div>
+</div>
+
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-lg-6 mb-5 mb-lg-0">
+      <h3>Total Vaccines by Day</h3>
+      <%= high_chart("vaccines_by_day", @vaccines_by_day) %>
+    </div>
+    <div class="col-lg-6">
+      <h3>Vaccines Administered by Day <span><%= yesterday(@vaccines_administered_compared_to_yesterday, true) %></h3>
+      <%= high_chart("vaccines_administered_by_day", @vaccines_administered_by_day) %>
     </div>
   </div>
 </div>
