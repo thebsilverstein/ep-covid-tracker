@@ -71,7 +71,7 @@
 
       <div class="container">
         <div class="row">
-          <div class="col col-md-10 offset-md-1 text-left">
+          <div class="col col-md-8 offset-md-2 text-left">
             <h2><%= @last_updated_on.strftime("%A, %B %e") %>:<br><span><%= pluralize number_with_delimiter(@new_cases), "New Coronavirus Case" %><%= ", #{pluralize(@delayed_results, "Delayed Positive Case") if @delayed_results > 0}" %>, <%= pluralize @new_deaths, "New Death" %>, <%= number_with_delimiter(@new_vaccines_administered) %> Vaccines Administered</span></h2>
             <p class="text-center">Get vaccinated! Pre-register to reserve your spot. <%= link_to "More Info", "https://www.epcovidvaccine.com", target: "_blank" %></p>
           </div>
