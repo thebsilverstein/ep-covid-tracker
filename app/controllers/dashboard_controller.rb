@@ -341,14 +341,19 @@ class DashboardController < ApplicationController
       end
     end
 
+    new_recoveries_by_day_data.delete_at(315)
+
     new_recoveries_by_day_average_data = []
 
     for i in (6..new_recoveries_by_day_data.size - 1)
       new_recoveries_by_day_average_data += [new_recoveries_by_day_data.sma(i,7).round(1)]
     end
 
+    edited_total_cases_by_day_categories = total_cases_by_day_categories.last(new_recoveries_by_day_data.size + 1)
+    edited_total_cases_by_day_categories.delete_at(315)
+
     @new_recoveries_by_day = LazyHighCharts::HighChart.new('graph') do |f|
-      f.xAxis(title: { enabled: false }, categories: total_cases_by_day_categories.last(new_recoveries_by_day_data.size))
+      f.xAxis(title: { enabled: false }, categories: edited_total_cases_by_day_categories)
       f.series(name: "New Recoveries", data: new_recoveries_by_day_data)
       f.series(name: "7-Day Average", data: new_recoveries_by_day_average_data.pad!((new_recoveries_by_day_average_data.size + 6) * -1,nil), type: "line")
 
