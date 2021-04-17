@@ -374,7 +374,6 @@ class DashboardController < ApplicationController
 
     for i in (0..total_cases_by_day_data.size - 1)
         active_cases_by_day_data += [total_cases_by_day_data[i] - (total_recoveries_by_day_data[i] || 0) - padded_total_deaths_by_day_data[i] - deaths_under_investigation_by_day_data[i]]
-        # puts active_cases_by_day_data
     end
 
     active_cases_by_day_average_data = []
