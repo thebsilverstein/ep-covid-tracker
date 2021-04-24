@@ -4,7 +4,7 @@
   <div class="row align-items-center">
     <div class="col-lg-6 text-center text-lg-left mb-3 mb-lg-0">
       <h1>El Paso, Texas COVID-19 Tracker</h1>
-      <p>Last Updated: <%= @last_updated_on.strftime("%B %e at %l:%M %p") %> MDT <em>(<%= time_ago_in_words(@last_updated_on) %> ago)</em></p>
+      <p>Data from March 13, 2020 to April 22, 2021</p>
     </div>
     <div class="col-lg-6 text-center total-cases">
       
@@ -49,14 +49,14 @@
   </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid mb-4">
   <div class="row">
     <div class="col-12 alert alert-notice text-center mb-0">
 
       <div class="container">
         <div class="row">
-          <div class="col col-md-8 offset-md-2 text-left">
-            <p class="text-center">On February 10, the city of El Paso updated their process for calculating recoveries and active cases. <%= link_to "More Info", "https://kfoxtv.com/news/local/el-paso-health-officials-to-update-covid-19-active-cases-wednesday", target: "_blank" %></p>
+          <div class="col col-md-12 text-center">
+            <p class="text-center">New data will no longer be added to this website as of April 22, 2021. For up-to-date COVID-19 data, please visit <%= link_to "epstrong.org", "https://www.epstrong.org/results.php", target: "_blank" %>. Stay safe!</p>
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@
   </div>
 </div>
 
-<div class="container-fluid mb-4">
+<!-- <div class="container-fluid mb-4">
   <div class="row">
     <div class="col-12 alert mb-0 text-center">
 
@@ -80,7 +80,7 @@
 
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="container mb-5">
   <div class="row">
@@ -112,11 +112,11 @@
 <div class="container mb-5">
   <div class="row">
     <div class="col-lg-6 mb-5 mb-lg-0">
-      <h3>New Cases by Day <span><%= yesterday(@new_cases_compared_to_yesterday) %></span></h3>
+      <h3>New Cases by Day <!-- <span><%= yesterday(@new_cases_compared_to_yesterday) %></span> --></h3>
       <%= high_chart("new_cases_by_day", @new_cases_by_day) %>
     </div>
     <div class="col-lg-6">
-      <h3>New Recoveries by Day <span><%= yesterday(@new_recoveries_compared_to_yesterday, true) %></h3>
+      <h3>New Recoveries by Day <!-- <span><%= yesterday(@new_recoveries_compared_to_yesterday, true) %></span> --></h3>
       <%= high_chart("new_recoveries_by_day", @new_recoveries_by_day) %>
     </div>
   </div>
@@ -129,7 +129,7 @@
       <%= high_chart("vaccines_by_day", @vaccines_by_day) %>
     </div>
     <div class="col-lg-6">
-      <h3>Vaccines Administered by Day <span><%= yesterday(@vaccines_administered_compared_to_yesterday, true) %></h3>
+      <h3>Vaccines Administered by Day <!-- <span><%= yesterday(@vaccines_administered_compared_to_yesterday, true) %></span> --></h3>
       <%= high_chart("vaccines_administered_by_day", @vaccines_administered_by_day) %>
     </div>
   </div>
@@ -138,7 +138,7 @@
 <div class="container mb-5">
   <div class="row">
     <div class="col-lg-12 mb-5 mb-lg-0">
-      <h3>Active Cases by Day <span><%= yesterday(@active_cases_compared_to_yesterday) %></h3>
+      <h3>Active Cases by Day <!-- <span><%= yesterday(@active_cases_compared_to_yesterday) %></span> --></h3>
       <%= high_chart("active_cases_by_day", @active_cases_by_day) %>
     </div>
   </div>
@@ -147,11 +147,11 @@
 <div class="container mb-5">
   <div class="row">
     <div class="col-lg-6 mb-5 mb-lg-0">
-      <h3>Patients Hospitalized <span><%= yesterday(@hospitalized_compared_to_yesterday) %></h3>
+      <h3>Patients Hospitalized <!-- <span><%= yesterday(@hospitalized_compared_to_yesterday) %></span> --></h3>
       <%= high_chart("patients_hospitalized", @patients_hospitalized) %>
     </div>
     <div class="col-lg-6">
-      <h3>Patients in ICU <span><%= yesterday(@in_icu_compared_to_yesterday) %></h3>
+      <h3>Patients in ICU <!-- <span><%= yesterday(@in_icu_compared_to_yesterday) %></span> --></h3>
       <%= high_chart("patients_in_icu", @patients_in_icu) %>
     </div>
   </div>
@@ -183,7 +183,7 @@
       </div>
     </div>
     <div class="col-lg-6">
-      <h3>New Deaths by Day <span><%= yesterday(@total_deaths_compared_to_yesterday) %></h3>
+      <h3>New Deaths by Day <!-- <span><%= yesterday(@total_deaths_compared_to_yesterday) %></span> --></h3>
       <%= high_chart("new_deaths_by_day", @new_deaths_by_day) %>
     </div>
   </div>
@@ -223,7 +223,7 @@
             <th>Zip Code</th>
             <th>Total Cases</th>
             <th>Active Cases</th>
-            <th>Active Cases<br>Compared To Yesterday</th>
+            <!-- <th>Active Cases<br>Compared To Yesterday</th> -->
           </tr>
         </thead>
         <tbody>
@@ -232,7 +232,7 @@
               <td><%= link_to point[0], point[1] %></td>
               <td><%= number_with_delimiter point[2] %></td>
               <td><%= number_with_delimiter point[3] %></td>
-              <td><%= yesterday(@active_cases_by_individual_zip_code_compared_to_yesterday[point[0]], false, true) %></td>
+              <!-- <td><%= yesterday(@active_cases_by_individual_zip_code_compared_to_yesterday[point[0]], false, true) %></td> -->
             </tr>
           <% end %>
         </tbody>
@@ -248,7 +248,7 @@
         <%= high_chart("total_cases_by_individual_zip_code_#{point[0]}", @total_cases_by_individual_zip_code[point[0]]) %>
       </div>
       <div class="col-md-6 chart-individual-zip-code mb-5">
-        <h3>Active Cases in <%= link_to point[0], point[1] %> <span><%= yesterday(@active_cases_by_individual_zip_code_compared_to_yesterday[point[0]]) %></span></h3>
+        <h3>Active Cases in <%= link_to point[0], point[1] %> <!-- <span><%= yesterday(@active_cases_by_individual_zip_code_compared_to_yesterday[point[0]]) %></span> --></h3>
         <%=  %>
         <%= high_chart("active_cases_by_individual_zip_code_#{point[0]}", @active_cases_by_individual_zip_code[point[0]]) %>
       </div>
